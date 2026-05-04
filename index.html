@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Alexander Worden portfolio — operations, analytics, data engineering, logistics systems, and performance improvement leadership." />
+<meta name="theme-color" content="#07111f" />
+<title>Alexander Worden — Operations, Analytics & Data Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #07111f;
+    --ink-2: #0d1b2f;
+    --ink-3: #12233a;
+    --panel: rgba(18, 35, 58, 0.74);
+    --panel-strong: rgba(24, 48, 78, 0.92);
+    --line: rgba(142, 184, 217, 0.18);
+    --line-strong: rgba(142, 184, 217, 0.34);
+    --text: #f1eadf;
+    --soft: #b6c5d1;
+    --muted: #7e94a8;
+    --accent: #63c4ff;
+    --accent-dark: #1d8cc7;
+    --gold: #f3b84c;
+    --green: #55d28f;
+    --red: #ff7a7a;
+    --shadow: 0 24px 70px rgba(0,0,0,0.35);
+    --radius: 28px;
+    --max: 1180px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at 14% 8%, rgba(99,196,255,0.18), transparent 31rem),
+      radial-gradient(circle at 82% 4%, rgba(243,184,76,0.10), transparent 28rem),
+      radial-gradient(circle at 72% 55%, rgba(85,210,143,0.09), transparent 34rem),
+      linear-gradient(180deg, #07111f 0%, #0a1525 48%, #07111f 100%);
+    color: var(--text);
+    font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.032) 1px, transparent 1px),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.20'/%3E%3C/svg%3E");
+    background-size: 72px 72px, 72px 72px, 260px 260px;
+    mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
+  }
+
+  a { color: inherit; }
+  strong { color: var(--text); font-weight: 650; }
+  .skip-link {
+    position: absolute;
+    left: -999px;
+    top: 1rem;
+    background: var(--accent);
+    color: #06101e;
+    padding: .8rem 1rem;
+    border-radius: 999px;
+    z-index: 999;
+  }
+  .skip-link:focus { left: 1rem; }
+
+  nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem clamp(1rem, 4vw, 3rem);
+    background: rgba(7,17,31,0.72);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(18px);
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: .8rem;
+    text-decoration: none;
+  }
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line-strong);
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(99,196,255,0.22), rgba(243,184,76,0.10));
+    box-shadow: 0 10px 30px rgba(99,196,255,0.08);
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+  }
+  .brand-copy { display: flex; flex-direction: column; line-height: 1.05; }
+  .brand-name { font-size: .9rem; font-weight: 650; letter-spacing: .02em; }
+  .brand-role { font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(.7rem, 2vw, 1.8rem);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .nav-links a {
+    color: var(--soft);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: .45rem 0;
+    border-bottom: 1px solid transparent;
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--accent); border-color: var(--accent); }
+  .nav-action {
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: .66rem;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    border: 1px solid rgba(99,196,255,0.35);
+    color: var(--accent);
+    padding: .72rem 1rem;
+    border-radius: 999px;
+    background: rgba(99,196,255,0.08);
+  }
+
+  main { position: relative; }
+  section, .section-wrap {
+    width: min(var(--max), calc(100% - 2rem));
+    margin-inline: auto;
+    padding: clamp(4.2rem, 8vw, 7.5rem) 0;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: .7rem;
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1rem;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 34px;
+    height: 1px;
+    background: currentColor;
+    opacity: .7;
+  }
+  .section-heading {
+    display: grid;
+    grid-template-columns: minmax(0, .95fr) minmax(260px, .55fr);
+    gap: 2rem;
+    align-items: end;
+    margin-bottom: 2.5rem;
+  }
+  h1, h2, h3 { margin: 0; line-height: 1.02; }
+  h1, h2 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; letter-spacing: -.035em; }
+  h2 { font-size: clamp(2.45rem, 5.5vw, 4.7rem); }
+  .section-lede { color: var(--soft); margin: 0; max-width: 52ch; font-size: 1.03rem; }
+
+  /* HERO */
+  .hero {
+    width: min(1380px, calc(100% - 2rem));
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(340px, .72fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+    padding: 8.8rem 0 5rem;
+  }
+  .hero h1 {
+    font-size: clamp(4rem, 10.8vw, 9.8rem);
+    max-width: 900px;
+  }
+  .hero h1 em {
+    color: var(--accent);
+    font-style: italic;
+    text-shadow: 0 0 42px rgba(99,196,255,0.25);
+  }
+  .hero-subtitle {
+    font-size: clamp(1.08rem, 2.1vw, 1.45rem);
+    color: var(--soft);
+    max-width: 730px;
+    margin: 1.7rem 0 0;
+  }
+  .hero-subtitle span { color: var(--text); }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .9rem;
+    margin-top: 2.2rem;
+  }
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    min-height: 48px;
+    border-radius: 999px;
+    padding: .82rem 1.25rem;
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    border: 1px solid var(--line-strong);
+    transition: transform .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
+    cursor: pointer;
+  }
+  .button:hover { transform: translateY(-2px); }
+  .button.primary {
+    background: linear-gradient(135deg, var(--accent), #9be1ff);
+    color: #04101b;
+    border-color: transparent;
+    box-shadow: 0 14px 40px rgba(99,196,255,0.24);
+    font-weight: 650;
+  }
+  .button.secondary { color: var(--text); background: rgba(255,255,255,0.035); }
+  .button.secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .button.gold { color: #15100a; background: linear-gradient(135deg, var(--gold), #ffe2a0); border-color: transparent; font-weight: 650; }
+
+  .hero-panel {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: linear-gradient(145deg, rgba(18,35,58,0.92), rgba(9,20,36,0.72));
+    box-shadow: var(--shadow);
+    padding: 1.1rem;
+    overflow: hidden;
+  }
+  .hero-panel::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(135deg, rgba(99,196,255,.34), transparent 35%, rgba(243,184,76,.20) 70%, transparent);
+    opacity: .75;
+    pointer-events: none;
+  }
+  .signal-card {
+    position: relative;
+    background: rgba(7,17,31,0.74);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 1.2rem;
+  }
+  .panel-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    color: var(--green);
+    font-family: 'DM Mono', monospace;
+    font-size: .67rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    border: 1px solid rgba(85,210,143,.24);
+    background: rgba(85,210,143,.08);
+    border-radius: 999px;
+    padding: .38rem .68rem;
+  }
+  .status-dot { width: 7px; height: 7px; border-radius: 999px; background: currentColor; box-shadow: 0 0 16px currentColor; }
+  .panel-title { font-family: 'DM Mono', monospace; color: var(--muted); font-size: .68rem; text-transform: uppercase; letter-spacing: .13em; }
+  .impact-stack { display: grid; gap: .7rem; }
+  .impact-row {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding: .92rem;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(255,255,255,0.035);
+  }
+  .impact-number { font-family: 'DM Serif Display', serif; font-size: 2.2rem; color: var(--accent); line-height: .95; }
+  .impact-row:nth-child(2) .impact-number { color: var(--gold); }
+  .impact-row:nth-child(3) .impact-number { color: var(--green); }
+  .impact-copy b { display: block; font-size: .92rem; color: var(--text); line-height: 1.2; }
+  .impact-copy span { display: block; font-size: .8rem; color: var(--muted); margin-top: .18rem; line-height: 1.35; }
+  .mini-terminal {
+    margin-top: .9rem;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.24);
+  }
+  .terminal-bar { display: flex; gap: .35rem; padding: .7rem .85rem; border-bottom: 1px solid var(--line); }
+  .terminal-dot { width: 8px; height: 8px; border-radius: 999px; background: var(--muted); opacity: .55; }
+  .terminal-code { padding: .9rem; font-family: 'DM Mono', monospace; color: var(--soft); font-size: .75rem; line-height: 1.65; }
+  .terminal-code .blue { color: var(--accent); } .terminal-code .green { color: var(--green); } .terminal-code .gold { color: var(--gold); }
+
+  .proof-strip {
+    width: min(var(--max), calc(100% - 2rem));
+    margin: -2.8rem auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: rgba(18,35,58,.58);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 18px 60px rgba(0,0,0,0.22);
+  }
+  .proof-item { padding: 1.25rem; border-right: 1px solid var(--line); }
+  .proof-item:last-child { border-right: 0; }
+  .proof-item b { display: block; font-family: 'DM Serif Display', serif; color: var(--text); font-size: clamp(1.7rem, 3vw, 2.6rem); line-height: 1; }
+  .proof-item span { display: block; margin-top: .45rem; color: var(--muted); font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
+
+  /* CARDS */
+  .card {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    border-radius: var(--radius);
+    box-shadow: 0 18px 60px rgba(0,0,0,0.20);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 1rem;
+  }
+  .about-copy { padding: clamp(1.35rem, 3.4vw, 2.4rem); }
+  .about-copy p { color: var(--soft); font-size: 1.02rem; margin: 0 0 1rem; }
+  .about-copy p:last-child { margin-bottom: 0; }
+  .role-card {
+    padding: 1.25rem;
+    display: grid;
+    gap: 1rem;
+    background:
+      radial-gradient(circle at 100% 0%, rgba(99,196,255,0.13), transparent 18rem),
+      var(--panel-strong);
+  }
+  .role-card h3 { font-size: 1.1rem; }
+  .role-meta { color: var(--muted); font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+  .role-list { display: grid; gap: .7rem; padding: 0; margin: 0; list-style: none; }
+  .role-list li { display: flex; gap: .7rem; color: var(--soft); font-size: .92rem; }
+  .role-list li::before { content: "✦"; color: var(--accent); flex: 0 0 auto; }
+
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .case-card {
+    position: relative;
+    padding: 1.35rem;
+    min-height: 320px;
+    overflow: hidden;
+    transition: transform .2s ease, border-color .2s ease, background .2s ease;
+  }
+  .case-card:hover { transform: translateY(-5px); border-color: rgba(99,196,255,.48); background: rgba(24,48,78,.82); }
+  .case-num { font-family: 'DM Mono', monospace; color: var(--accent); font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: .85rem; }
+  .case-card h3 { font-size: 1.45rem; line-height: 1.1; margin-bottom: .8rem; }
+  .case-card p { color: var(--soft); margin: 0 0 1rem; font-size: .95rem; }
+  .case-tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: auto; }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: .32rem .62rem;
+    color: var(--soft);
+    background: rgba(255,255,255,0.035);
+    font-family: 'DM Mono', monospace;
+    font-size: .64rem;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+  }
+  .case-result {
+    margin: 1rem 0;
+    padding: .85rem;
+    border-left: 2px solid var(--green);
+    background: rgba(85,210,143,.07);
+    border-radius: 0 14px 14px 0;
+    color: var(--text);
+    font-size: .9rem;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .metric {
+    min-height: 176px;
+    padding: 1.2rem;
+    background: rgba(18,35,58,.86);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .metric b { font-family: 'DM Serif Display', serif; font-size: clamp(2.25rem, 4vw, 3.3rem); color: var(--accent); line-height: .95; font-weight: 400; }
+  .metric:nth-child(2n) b { color: var(--gold); }
+  .metric:nth-child(3n) b { color: var(--green); }
+  .metric span { color: var(--soft); font-size: .9rem; line-height: 1.3; }
+  .metric small { color: var(--muted); font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .09em; text-transform: uppercase; }
+
+  .timeline { position: relative; display: grid; gap: 1rem; }
+  .job {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 1.3rem;
+    padding: 1.35rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(18,35,58,.62);
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .job:hover { transform: translateX(4px); border-color: rgba(99,196,255,.42); }
+  .job-company { font-family: 'DM Serif Display', serif; font-size: 1.55rem; }
+  .job-date { color: var(--muted); font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; margin-top: .4rem; }
+  .job-title { color: var(--accent); font-weight: 650; margin-bottom: .8rem; }
+  .job ul { margin: 0; padding: 0; list-style: none; display: grid; gap: .52rem; }
+  .job li { color: var(--soft); padding-left: 1.25rem; position: relative; font-size: .95rem; }
+  .job li::before { content: "▸"; position: absolute; left: 0; top: 0; color: var(--accent); }
+
+  .skills-layout {
+    display: grid;
+    grid-template-columns: .75fr 1.25fr;
+    gap: 1rem;
+  }
+  .toolbox {
+    padding: 1.35rem;
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+  }
+  .toolbox h3 { font-size: 1.7rem; font-family: 'DM Serif Display', serif; font-weight: 400; }
+  .toolbox p { color: var(--soft); margin: 0; }
+  .skill-matrix { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .skill-block { padding: 1.25rem; }
+  .skill-block h3 { font-size: 1rem; color: var(--accent); font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .12em; margin-bottom: .85rem; }
+  .tag-cloud { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+  .cert-grid, .personal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .cert, .personal-card { padding: 1.25rem; }
+  .cert h3, .personal-card h3 { font-size: 1.08rem; margin-bottom: .45rem; }
+  .cert p, .personal-card p { color: var(--soft); margin: 0; font-size: .93rem; }
+  .cert small, .personal-card small { display: block; color: var(--gold); font-family: 'DM Mono', monospace; font-size: .65rem; letter-spacing: .09em; text-transform: uppercase; margin-top: .9rem; }
+
+  .contact {
+    width: min(980px, calc(100% - 2rem));
+    text-align: center;
+  }
+  .contact-panel {
+    padding: clamp(1.5rem, 4vw, 3rem);
+    background:
+      radial-gradient(circle at 20% 0%, rgba(99,196,255,0.18), transparent 21rem),
+      radial-gradient(circle at 90% 20%, rgba(243,184,76,0.12), transparent 18rem),
+      rgba(18,35,58,.78);
+  }
+  .contact h2 { font-size: clamp(2.8rem, 7vw, 5.6rem); margin-bottom: 1rem; }
+  .contact p { color: var(--soft); max-width: 660px; margin: 0 auto 1.5rem; }
+  .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: .7rem; margin: 1.6rem 0 2rem; }
+  .contact-chip {
+    text-decoration: none;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: .72rem 1rem;
+    color: var(--soft);
+    background: rgba(255,255,255,.04);
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem;
+    letter-spacing: .06em;
+  }
+  .contact-chip:hover { color: var(--accent); border-color: var(--accent); }
+
+  footer {
+    border-top: 1px solid var(--line);
+    width: min(var(--max), calc(100% - 2rem));
+    margin-inline: auto;
+    padding: 1.4rem 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: .66rem;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  @media (max-width: 1040px) {
+    .hero { grid-template-columns: 1fr; padding-top: 7.4rem; }
+    .hero-panel { max-width: 620px; }
+    .proof-strip { grid-template-columns: repeat(2, 1fr); margin-top: 0; }
+    .proof-item:nth-child(2) { border-right: 0; }
+    .proof-item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .section-heading, .about-grid, .skills-layout { grid-template-columns: 1fr; }
+    .case-grid, .cert-grid, .personal-grid { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 760px) {
+    nav { padding: .75rem 1rem; }
+    .brand-role { display: none; }
+    .nav-links { display: none; }
+    .nav-action { padding: .64rem .8rem; }
+    .hero { width: min(100% - 1.2rem, 1380px); padding: 6.4rem 0 3rem; }
+    .hero h1 { font-size: clamp(3.45rem, 18vw, 6rem); }
+    .hero-subtitle { font-size: 1.02rem; }
+    .hero-actions .button { width: 100%; }
+    .impact-row { grid-template-columns: 78px 1fr; }
+    .impact-number { font-size: 1.85rem; }
+    section, .section-wrap, .contact { width: min(100% - 1.2rem, var(--max)); padding: 4.6rem 0; }
+    .proof-strip { width: min(100% - 1.2rem, var(--max)); grid-template-columns: 1fr; border-radius: 22px; }
+    .proof-item { border-right: 0; border-bottom: 1px solid var(--line); }
+    .proof-item:last-child { border-bottom: 0; }
+    .metrics-grid { grid-template-columns: 1fr; border-radius: 22px; }
+    .metric { min-height: 128px; }
+    .job { grid-template-columns: 1fr; gap: .75rem; border-radius: 22px; }
+    .skill-matrix { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+  }
+
+  @media print {
+    body { background: white; color: #111; }
+    nav, .hero-panel, .hero-actions, .contact .button, body::before { display: none !important; }
+    section, .section-wrap, .hero, .proof-strip, footer { width: 100%; padding: 1rem 0; margin: 0; }
+    .hero { min-height: auto; display: block; }
+    .hero h1, h2 { color: #111; }
+    .card, .job, .metric, .proof-strip { border: 1px solid #ddd; background: white; box-shadow: none; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Alexander Worden",
+  "url": "https://AlexanderWorden.com",
+  "email": "mailto:alexanderjworden@gmail.com",
+  "telephone": "+1-940-536-9800",
+  "address": { "@type": "PostalAddress", "addressLocality": "Frisco", "addressRegion": "TX", "addressCountry": "US" },
+  "jobTitle": "Operations Support Lead | Analytics & Data Engineering",
+  "worksFor": { "@type": "Organization", "name": "Skipcart / 7-Eleven" },
+  "knowsAbout": ["Last-mile logistics", "Operations analytics", "Databricks", "Spark SQL", "Driver quality systems", "Google Apps Script", "Twilio", "Leaflet.js", "Tableau", "Power BI", "Lean Six Sigma"]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav aria-label="Primary navigation">
+  <a class="brand" href="#top" aria-label="Alexander Worden home">
+    <span class="brand-mark">AW</span>
+    <span class="brand-copy">
+      <span class="brand-name">Alexander Worden</span>
+      <span class="brand-role">Ops · Analytics · Systems</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#systems">Systems</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-action" href="mailto:alexanderjworden@gmail.com">Email Me</a>
+</nav>
+
+<main id="main">
+  <header id="top" class="hero section-wrap">
+    <div class="hero-copy reveal">
+      <p class="eyebrow">Operations · Analytics · Data Engineering</p>
+      <h1>Every challenge is an <em>opportunity.</em></h1>
+      <p class="hero-subtitle">I build the bridge between strategy and execution: <span>diagnosing operational problems with data, shipping lightweight internal tools, and leading performance systems that move real business metrics.</span></p>
+      <div class="hero-actions" aria-label="Primary actions">
+        <a class="button primary" href="#systems">See Proof of Work</a>
+        <a class="button secondary" href="#experience">View Experience</a>
+        <a class="button secondary" href="./Alex_Worden_Resume_2025.docx" download>Download Resume</a>
+      </div>
+    </div>
+
+    <aside class="hero-panel reveal" aria-label="Impact dashboard preview">
+      <div class="signal-card">
+        <div class="panel-top">
+          <div>
+            <div class="panel-title">Live operator profile</div>
+            <h2 style="font-size:1.7rem;margin-top:.25rem;">Builder who ships</h2>
+          </div>
+          <span class="status-pill"><span class="status-dot"></span>Open to roles</span>
+        </div>
+        <div class="impact-stack">
+          <div class="impact-row">
+            <div class="impact-number">96%+</div>
+            <div class="impact-copy"><b>On-time delivery reached</b><span>Priority partner performance lift through workflow separation, monitoring, and quality systems.</span></div>
+          </div>
+          <div class="impact-row">
+            <div class="impact-number">0%</div>
+            <div class="impact-copy"><b>Cancellation rate achieved</b><span>Reduced from roughly 50% for a priority partner during 2025 impact work.</span></div>
+          </div>
+          <div class="impact-row">
+            <div class="impact-number">85%</div>
+            <div class="impact-copy"><b>Recruitment cost reduction</b><span>Redesigned contractor recruiting and onboarding operations at Foodja.</span></div>
+          </div>
+        </div>
+        <div class="mini-terminal" aria-hidden="true">
+          <div class="terminal-bar"><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span></div>
+          <div class="terminal-code">
+            <span class="blue">SELECT</span> problem, signal, action<br>
+            <span class="blue">FROM</span> operations<br>
+            <span class="blue">WHERE</span> answer = <span class="green">'measurable improvement'</span>;<br>
+            <span class="gold">// diagnose → build → deploy → improve</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </header>
+
+  <div id="impact" class="proof-strip reveal" aria-label="Key career metrics">
+    <div class="proof-item"><b>8+</b><span>Years leading ops</span></div>
+    <div class="proof-item"><b>50K+</b><span>Weekly orders managed</span></div>
+    <div class="proof-item"><b>$200K+</b><span>Annual fraud savings</span></div>
+    <div class="proof-item"><b>97%</b><span>Record on-time rate</span></div>
+  </div>
+
+  <section id="about" aria-labelledby="about-title">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">Positioning</p>
+        <h2 id="about-title">Bridging strategy and execution.</h2>
+      </div>
+      <p class="section-lede">Recruiters usually see operations, analytics, and engineering as separate lanes. My lane is the overlap: I find the operational failure point, model it, build the tool, communicate the change, and make the KPI move.</p>
+    </div>
+    <div class="about-grid">
+      <article class="card about-copy reveal">
+        <p>I am a results-driven operations and analytics leader with 8+ years across last-mile logistics, workforce performance, data engineering, and customer-focused process improvement. My work is rooted in one principle: <strong>the best operational strategy is only valuable when it becomes a repeatable system people can actually use.</strong></p>
+        <p>At Skipcart / 7-Eleven, I own delivery system configurations, driver quality programs, and performance analytics while building internal tools that turn messy operational data into fast decisions. At Foodja, I led multi-market operations, reduced costs, improved on-time delivery, and helped scale processes during high-growth periods.</p>
+        <p>I work comfortably from executive summary to SQL logic to frontline communication. That combination lets me move quickly without losing the human side of operations.</p>
+      </article>
+      <aside class="card role-card reveal">
+        <div>
+          <div class="role-meta">Current focus</div>
+          <h3>Operations Support Lead | Analytics & Data Engineering</h3>
+          <p style="color:var(--muted);margin:.35rem 0 0;">Skipcart / 7-Eleven · Irving, TX · Remote</p>
+        </div>
+        <ul class="role-list">
+          <li>Delivery system configurations and market health monitoring</li>
+          <li>Driver quality scoring, promotion, demotion, and infraction systems</li>
+          <li>Databricks / Spark SQL analytics pipelines and lightweight dashboards</li>
+          <li>Executive reporting, stakeholder recommendations, and operational change</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section id="systems" aria-labelledby="systems-title">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">Proof of work</p>
+        <h2 id="systems-title">Systems I have built to make operations better.</h2>
+      </div>
+      <p class="section-lede">These are not just projects. They are practical operating systems: data pipelines, maps, communications, scoring models, and alerts designed to change behavior at scale.</p>
+    </div>
+    <div class="case-grid">
+      <article class="card case-card reveal">
+        <div class="case-num">01 · Driver quality intelligence</div>
+        <h3>Bayesian-adjusted scoring pipeline</h3>
+        <p>Architected a Databricks / Spark SQL pipeline that evaluates driver quality with national and area-level tiers, cohort movement criteria, and normalized infraction rates.</p>
+        <div class="case-result"><strong>Outcome:</strong> Gave operations a defensible way to promote, coach, demote, and manage driver performance.</div>
+        <div class="case-tags"><span class="tag">Databricks</span><span class="tag">Spark SQL</span><span class="tag">NTILE</span><span class="tag">Bayesian</span></div>
+      </article>
+      <article class="card case-card reveal">
+        <div class="case-num">02 · Performance communication</div>
+        <h3>Tier-based email and SMS engine</h3>
+        <p>Engineered driver performance communications using weekly HTML ranking emails and Twilio SMS, deployed across markets to encourage stronger order follow-through.</p>
+        <div class="case-result"><strong>Outcome:</strong> Created a competitive culture that pushed KPI improvement beyond fixed targets.</div>
+        <div class="case-tags"><span class="tag">Apps Script</span><span class="tag">Twilio</span><span class="tag">HTML Email</span><span class="tag">Automation</span></div>
+      </article>
+      <article class="card case-card reveal">
+        <div class="case-num">03 · Operational visibility</div>
+        <h3>Geospatial order and GPS tooling</h3>
+        <p>Built internal map tools including a Leaflet.js order map, GPS track viewer, scatterplot explorers, and drag-and-drop dashboards for fast root cause analysis.</p>
+        <div class="case-result"><strong>Outcome:</strong> Reduced the distance between data discovery and operational action.</div>
+        <div class="case-tags"><span class="tag">Leaflet.js</span><span class="tag">HTML/JS</span><span class="tag">CSV</span><span class="tag">RCA</span></div>
+      </article>
+      <article class="card case-card reveal">
+        <div class="case-num">04 · Early warning operations</div>
+        <h3>Delay risk detection and intervention</h3>
+        <p>Improved alerting systems for signals such as extended restaurant wait time, pickup abandonment, ETA drift, and downstream delay risk.</p>
+        <div class="case-result"><strong>Outcome:</strong> Helped teams reroute, intervene, or communicate before delays became client-facing failures.</div>
+        <div class="case-tags"><span class="tag">Process Design</span><span class="tag">ETA</span><span class="tag">Routing</span><span class="tag">Alerts</span></div>
+      </article>
+      <article class="card case-card reveal">
+        <div class="case-num">05 · Contractor supply planning</div>
+        <h3>Predictive staffing and market health</h3>
+        <p>Developed supply planning approaches that account for order volume, driver availability, acceptance behavior, and operational demand by market.</p>
+        <div class="case-result"><strong>Outcome:</strong> Supported efficient staffing, market readiness, and better fulfillment decisions.</div>
+        <div class="case-tags"><span class="tag">Forecasting</span><span class="tag">Excel</span><span class="tag">Power BI</span><span class="tag">Tableau</span></div>
+      </article>
+      <article class="card case-card reveal">
+        <div class="case-num">06 · Contract enforcement</div>
+        <h3>Carrot-and-stick quality system</h3>
+        <p>Designed incentive and enforcement programs that reward strong delivery behavior while escalating repeated punctuality and compliance failures.</p>
+        <div class="case-result"><strong>Outcome:</strong> Increased accountability while protecting service quality and client expectations.</div>
+        <div class="case-tags"><span class="tag">Driver Ops</span><span class="tag">Compliance</span><span class="tag">SOPs</span><span class="tag">KPI</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="results" aria-labelledby="results-title">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">Measured results</p>
+        <h2 id="results-title">The numbers recruiters should remember.</h2>
+      </div>
+      <p class="section-lede">I try to leave every operation more measurable, more scalable, and more accountable than I found it.</p>
+    </div>
+    <div class="metrics-grid reveal">
+      <div class="metric"><small>Priority partner</small><b>0%</b><span>Cancellation rate reduced from roughly 50%</span></div>
+      <div class="metric"><small>Delivery quality</small><b>96%+</b><span>On-time delivery reached through focused improvements</span></div>
+      <div class="metric"><small>Foodja record</small><b>97%</b><span>Peak on-time delivery within 15-minute window</span></div>
+      <div class="metric"><small>Recruiting ops</small><b>85%</b><span>Reduction in contractor recruitment cost</span></div>
+      <div class="metric"><small>P&L efficiency</small><b>35%</b><span>Operational cost reduction while scaling revenue</span></div>
+      <div class="metric"><small>Fraud detection</small><b>$200K+</b><span>Annual savings from fraud detection system</span></div>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="experience-title">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">Experience</p>
+        <h2 id="experience-title">A career built around operational leverage.</h2>
+      </div>
+      <p class="section-lede">The throughline is consistent: find the bottleneck, turn it into a system, and use data to scale the fix.</p>
+    </div>
+    <div class="timeline">
+      <article class="job reveal">
+        <div>
+          <div class="job-company">Skipcart / 7-Eleven</div>
+          <div class="job-date">Jan 2025 — Present</div>
+        </div>
+        <div>
+          <div class="job-title">Operations Support Lead | Analytics & Data Engineering · Irving, TX (Remote)</div>
+          <ul>
+            <li>Own delivery system configurations and market health monitoring across catering and on-demand delivery operations.</li>
+            <li>Delivered measurable lifts across three priority partners within 9 months and earned an Exceeds Expectations annual review.</li>
+            <li>Architected driver infraction CRM, Databricks quality pipeline, ranking emails, Twilio SMS, and internal operational dashboards.</li>
+            <li>Present analyses, findings, and process recommendations to executive leadership and cross-functional partners.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job reveal">
+        <div>
+          <div class="job-company">Foodja</div>
+          <div class="job-date">Mar 2020 — Dec 2024</div>
+        </div>
+        <div>
+          <div class="job-title">Senior Manager of Operations | Manager of Market Operations · Dallas, TX</div>
+          <ul>
+            <li>Promoted within 18 months and led end-to-end operations for a catering delivery platform across multiple markets.</li>
+            <li>Reduced recruitment cost by 85%, onboarding time by 70%, and operational costs by 35% while scaling market revenue.</li>
+            <li>Achieved a record 97% on-time delivery rate through predictive analytics and operational efficiency improvements.</li>
+            <li>Built proactive client communications, SOPs, training materials, and driver engagement programs.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job reveal">
+        <div>
+          <div class="job-company">Grubhub</div>
+          <div class="job-date">Nov 2018 — Mar 2020</div>
+        </div>
+        <div>
+          <div class="job-title">Market Operations Specialist · Chandler, AZ</div>
+          <ul>
+            <li>Managed delivery logistics for 35+ markets and supported completion of 50,000+ weekly orders.</li>
+            <li>Pioneered fraud detection that produced $200K+ in annual savings and earned company-wide recognition.</li>
+            <li>Designed proactive intervention protocols to reduce service disruptions and increase customer satisfaction.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job reveal">
+        <div>
+          <div class="job-company">Safelite AutoGlass</div>
+          <div class="job-date">May 2016 — Jul 2018</div>
+        </div>
+        <div>
+          <div class="job-title">Special Services Desk Representative · Chandler, AZ</div>
+          <ul>
+            <li>Coordinated appointment scheduling and vendor partnerships for timely, high-quality service delivery.</li>
+            <li>Streamlined operational workflows, improved appointment accuracy by 20%, and achieved a 95% customer satisfaction score.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-title">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">Toolkit</p>
+        <h2 id="skills-title">Where operations meets build mode.</h2>
+      </div>
+      <p class="section-lede">I am strongest in environments where the answer is not sitting in an off-the-shelf dashboard and someone needs to create the operating rhythm from scratch.</p>
+    </div>
+    <div class="skills-layout">
+      <aside class="card toolbox reveal">
+        <h3>What I bring</h3>
+        <p><strong>Analytical range:</strong> from executive KPI summaries to row-level SQL logic.</p>
+        <p><strong>Operational credibility:</strong> years of frontline logistics, market ops, and workforce performance ownership.</p>
+        <p><strong>Builder mindset:</strong> self-contained dashboards, Apps Script tools, maps, SMS workflows, and rapid prototypes that become real internal systems.</p>
+      </aside>
+      <div class="skill-matrix">
+        <div class="card skill-block reveal"><h3>Data & Analytics</h3><div class="tag-cloud"><span class="tag">Databricks</span><span class="tag">Spark SQL</span><span class="tag">Tableau</span><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">Python scripting</span></div></div>
+        <div class="card skill-block reveal"><h3>Engineering & Tooling</h3><div class="tag-cloud"><span class="tag">HTML/JS dashboards</span><span class="tag">Google Apps Script</span><span class="tag">Leaflet.js</span><span class="tag">Twilio SMS</span><span class="tag">REST APIs</span><span class="tag">KNIME / Alteryx</span></div></div>
+        <div class="card skill-block reveal"><h3>Operations</h3><div class="tag-cloud"><span class="tag">Last-mile logistics</span><span class="tag">KPI management</span><span class="tag">P&L optimization</span><span class="tag">Workforce performance</span><span class="tag">Driver quality</span><span class="tag">Lean Six Sigma</span></div></div>
+        <div class="card skill-block reveal"><h3>Leadership</h3><div class="tag-cloud"><span class="tag">Team leadership</span><span class="tag">Cross-functional projects</span><span class="tag">Agile methods</span><span class="tag">SOP development</span><span class="tag">Remote teams</span><span class="tag">Executive comms</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="credentials" aria-labelledby="credentials-title">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">Credentials</p>
+        <h2 id="credentials-title">Certifications and education.</h2>
+      </div>
+      <p class="section-lede">Formal process improvement training paired with hands-on operational systems work.</p>
+    </div>
+    <div class="cert-grid">
+      <div class="card cert reveal"><h3>Lean Six Sigma Green Belt</h3><p>Arizona State University · #62107288</p><small>Oct 2022</small></div>
+      <div class="card cert reveal"><h3>Lean Six Sigma Yellow Belt</h3><p>Arizona State University · #56325003</p><small>Sep 2021</small></div>
+      <div class="card cert reveal"><h3>OSHA General Industry Safety & Health</h3><p>Occupational Safety and Health Administration · #36-701526104</p><small>Feb 2014</small></div>
+    </div>
+  </section>
+
+  <section id="personal" aria-labelledby="personal-title">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">Beyond work</p>
+        <h2 id="personal-title">The person behind the systems.</h2>
+      </div>
+      <p class="section-lede">Chicago-born, Texas-raised, shaped by competition, curiosity, and a habit of turning interests into projects.</p>
+    </div>
+    <div class="personal-grid">
+      <div class="card personal-card reveal"><h3>Competition</h3><p>Ryan High School water polo, state championship runs, and two Junior Olympics appearances. I learned early how much systems, preparation, and team trust matter.</p><small>Water polo · Team performance</small></div>
+      <div class="card personal-card reveal"><h3>Creative eye</h3><p>Landscape photography, aerial/drone work, concerts, DJing, and travel keep me curious and help me see patterns outside of spreadsheets.</p><small>Photography · Music · Travel</small></div>
+      <div class="card personal-card reveal"><h3>Community</h3><p>Frisco CERT Siren Warden and amateur emergency management volunteer. I care about preparedness, public safety, and practical tools that help people act.</p><small>CERT · Emergency management</small></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-title">
+    <div class="card contact-panel reveal">
+      <p class="eyebrow" style="justify-content:center;"><span style="display:none"></span>Contact</p>
+      <h2 id="contact-title">Let’s build what moves the metric.</h2>
+      <p>Open to operations, analytics, data engineering, logistics, and performance systems roles where hands-on problem solving matters.</p>
+      <div class="contact-links">
+        <a class="contact-chip" href="mailto:alexanderjworden@gmail.com">✉ alexanderjworden@gmail.com</a>
+        <a class="contact-chip" href="tel:+19405369800">☎ (940) 536-9800</a>
+        <a class="contact-chip" href="https://AlexanderWorden.com" target="_blank" rel="noopener">⌁ AlexanderWorden.com</a>
+        <a class="contact-chip" href="https://www.linkedin.com/in/alexander-worden" target="_blank" rel="noopener">in LinkedIn</a>
+      </div>
+      <div class="hero-actions" style="justify-content:center;margin-top:0;">
+        <a class="button primary" href="mailto:alexanderjworden@gmail.com?subject=Opportunity%20for%20Alexander%20Worden">Start a Conversation</a>
+        <a class="button gold" href="./Alex_Worden_Resume_2025.docx" download>Download Resume</a>
+        <button class="button secondary" type="button" onclick="window.print()">Print / Save PDF</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© <span id="year"></span> Alexander Worden · Frisco, TX</span>
+  <span>Operations · Analytics · Data Engineering</span>
+</footer>
+
+<script>
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.reveal').forEach((el, index) => {
+    el.style.transitionDelay = `${Math.min(index * 28, 180)}ms`;
+    revealObserver.observe(el);
+  });
+
+  const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+  const sections = navLinks
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean);
+
+  const setActiveNav = () => {
+    const y = window.scrollY + 140;
+    let current = sections[0]?.id || '';
+    sections.forEach(section => {
+      if (section.offsetTop <= y) current = section.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+    });
+  };
+  window.addEventListener('scroll', setActiveNav, { passive: true });
+  window.addEventListener('load', setActiveNav);
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
