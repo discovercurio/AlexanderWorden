@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Alexander Worden portfolio — operations transformation, analytics, data systems, process improvement, and performance leadership." />
 <meta name="theme-color" content="#07111f" />
-<!-- Favicon: embedded fallback plus local SVG file.
-     The embedded data URI makes the tab icon work even when this HTML is opened directly
-     or moved without the separate aw-favicon.svg file. -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxMjIzM2EiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwZDFiMmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDcxMTFmIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJzdHJva2UiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzYzYzRmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmM2I4NGMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJzaGFkb3ciIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iMyIgc3RkRGV2aWF0aW9uPSIzIiBmbG9vZC1jb2xvcj0iIzAwMDAwMCIgZmxvb2Qtb3BhY2l0eT0iMC4zNSIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHg9IjQiIHk9IjQiIHdpZHRoPSI1NiIgaGVpZ2h0PSI1NiIgcng9IjE2IiBmaWxsPSJ1cmwoI2JnKSIgc3Ryb2tlPSJ1cmwoI3N0cm9rZSkiIHN0cm9rZS13aWR0aD0iMi41Ii8+CiAgPGNpcmNsZSBjeD0iMTgiIGN5PSIxNiIgcj0iMTAiIGZpbGw9IiM2M2M0ZmYiIG9wYWNpdHk9IjAuMTIiLz4KICA8Y2lyY2xlIGN4PSI0OSIgY3k9IjQ5IiByPSIxMSIgZmlsbD0iI2YzYjg0YyIgb3BhY2l0eT0iMC4xMCIvPgogIDx0ZXh0IHg9IjMyIiB5PSIzOSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsICdUaW1lcyBOZXcgUm9tYW4nLCBzZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgbGV0dGVyLXNwYWNpbmc9IjEiIGZpbGw9IiNmMWVhZGYiIGZpbHRlcj0idXJsKCNzaGFkb3cpIj5BVzwvdGV4dD4KPC9zdmc+Cg==" />
 <link rel="alternate icon" type="image/svg+xml" href="./aw-favicon.svg" />
 <link rel="apple-touch-icon" href="./aw-favicon.svg" />
@@ -890,7 +887,7 @@
   <section id="contact" class="contact" aria-labelledby="contact-title">
     <div class="card contact-panel reveal">
       <p class="eyebrow" style="justify-content:center;"><span style="display:none"></span>Contact</p>
-      <h2 id="contact-title">Let’s build what moves the business.</h2>
+      <h2 id="contact-title">Let's build what moves the business.</h2>
       <p>Open to operations strategy, business analytics, data systems, process improvement, and performance transformation roles where hands-on problem solving matters.</p>
       <div class="contact-links">
         <a class="contact-chip" href="mailto:alexanderjworden@gmail.com">✉ alexanderjworden@gmail.com</a>
@@ -912,9 +909,117 @@
   <span>Operations · Analytics · Data Engineering</span>
 </footer>
 
+<!-- ============================================================
+     VISITOR TRACKER — invisible, no UI impact whatsoever
+     Replace YOUR_DEPLOYMENT_URL_HERE with your Apps Script
+     Web App deployment URL after you deploy the .gs file.
+     ============================================================ -->
 <script>
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
+(function () {
+  // ── PASTE YOUR WEB APP URL HERE ──────────────────────────────
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbypZXzPYXnfl6I4ELPElZheq0B4pGwxXhffE2mwS21jG12zQi8s_tjanagjzSwITZroOA/exec";
+  // ─────────────────────────────────────────────────────────────
+
+  // Don't run if the endpoint hasn't been configured
+  if (!ENDPOINT || ENDPOINT === "YOUR_DEPLOYMENT_URL_HERE") return;
+
+  var startTime = Date.now();
+  var pingSent  = false; // prevent duplicate load pings
+
+  // ── Parse user-agent into device / OS / browser ──────────────
+  function parseUA(ua) {
+    var device =
+      /Mobi|Android|iPhone|iPad|iPod/i.test(ua) ? "Mobile" :
+      /Tablet|iPad/i.test(ua)                    ? "Tablet" : "Desktop";
+
+    var os =
+      /Windows NT 10|Windows NT 11/.test(ua) ? "Windows 10/11" :
+      /Windows/.test(ua)                     ? "Windows (older)" :
+      /iPhone|iPad|iPod/.test(ua)            ? "iOS" :
+      /Android/.test(ua)                     ? "Android" :
+      /Mac OS X/.test(ua)                    ? "macOS" :
+      /Linux/.test(ua)                       ? "Linux" : "Unknown";
+
+    var browser =
+      /Edg\//.test(ua)     ? "Edge" :
+      /OPR\/|Opera/.test(ua) ? "Opera" :
+      /Chrome\//.test(ua)  ? "Chrome" :
+      /Firefox\//.test(ua) ? "Firefox" :
+      /Safari\//.test(ua)  ? "Safari" : "Unknown";
+
+    return { device: device, os: os, browser: browser };
+  }
+
+  // ── Build and fire the beacon ─────────────────────────────────
+  function sendPing(eventType, duration) {
+    var ua   = parseUA(navigator.userAgent);
+    var base = {
+      event:   eventType || "load",
+      device:  ua.device,
+      os:      ua.os,
+      browser: ua.browser,
+      screen:  screen.width + "x" + screen.height,
+      tz:      (Intl && Intl.DateTimeFormat)
+                 ? Intl.DateTimeFormat().resolvedOptions().timeZone
+                 : "",
+      lang:    navigator.language || "",
+      ref:     document.referrer  || "",
+      url:     window.location.href,
+      duration: duration != null ? String(duration) : ""
+    };
+
+    // Attempt IP + geo enrichment via free ipapi.co
+    // Falls back gracefully if the lookup fails or is rate-limited
+    fetch("https://ipapi.co/json/", { cache: "no-store" })
+      .then(function (r) { return r.json(); })
+      .then(function (geo) {
+        base.ip      = geo.ip           || "";
+        base.city    = geo.city         || "";
+        base.region  = geo.region       || "";
+        base.country = geo.country_name || "";
+        base.isp     = geo.org          || "";
+      })
+      .catch(function () {
+        // Geo failed — still log the visit without location data
+      })
+      .finally(function () {
+        var qs = Object.keys(base)
+          .map(function (k) {
+            return encodeURIComponent(k) + "=" + encodeURIComponent(base[k]);
+          })
+          .join("&");
+        // no-cors: silent fire, no preflight, no response needed
+        fetch(ENDPOINT + "?" + qs, { mode: "no-cors" }).catch(function () {});
+      });
+  }
+
+  // ── Fire on page load (once) ──────────────────────────────────
+  window.addEventListener("load", function () {
+    if (!pingSent) {
+      pingSent = true;
+      sendPing("load", null);
+    }
+  });
+
+  // ── Fire on page exit with time-on-page ──────────────────────
+  // Uses both beforeunload (desktop) and visibilitychange (mobile/tab switch)
+  function onExit() {
+    var duration = Math.round((Date.now() - startTime) / 1000);
+    sendPing("exit", duration);
+  }
+
+  window.addEventListener("beforeunload", onExit);
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") onExit();
+  });
+})();
+</script>
+
+<script>
+  // ── Reveal-on-scroll ─────────────────────────────────────────
+  var revealObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
         revealObserver.unobserve(entry.target);
@@ -922,28 +1027,31 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
 
-  document.querySelectorAll('.reveal').forEach((el, index) => {
-    el.style.transitionDelay = `${Math.min(index * 28, 180)}ms`;
+  document.querySelectorAll('.reveal').forEach(function (el, index) {
+    el.style.transitionDelay = Math.min(index * 28, 180) + 'ms';
     revealObserver.observe(el);
   });
 
-  const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
-  const sections = navLinks
-    .map(link => document.querySelector(link.getAttribute('href')))
+  // ── Active nav link tracking ──────────────────────────────────
+  var navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+  var sections = navLinks
+    .map(function (link) { return document.querySelector(link.getAttribute('href')); })
     .filter(Boolean);
 
-  const setActiveNav = () => {
-    const y = window.scrollY + 140;
-    let current = sections[0]?.id || '';
-    sections.forEach(section => {
+  function setActiveNav() {
+    var y       = window.scrollY + 140;
+    var current = sections[0] ? sections[0].id : '';
+    sections.forEach(function (section) {
       if (section.offsetTop <= y) current = section.id;
     });
-    navLinks.forEach(link => {
-      link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+    navLinks.forEach(function (link) {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
     });
-  };
+  }
   window.addEventListener('scroll', setActiveNav, { passive: true });
   window.addEventListener('load', setActiveNav);
+
+  // ── Footer year ───────────────────────────────────────────────
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
