@@ -183,17 +183,18 @@
 
   /* HERO */
   .hero {
-    width: min(1380px, calc(100% - 2rem));
+    width: min(1320px, calc(100% - 2rem));
     min-height: 100svh;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(340px, .72fr);
     align-items: center;
-    gap: clamp(2rem, 5vw, 5rem);
-    padding: 8.8rem 0 5rem;
+    gap: clamp(2rem, 4vw, 4rem);
+    padding: 7.2rem 0 4rem;
   }
   .hero h1 {
-    font-size: clamp(4rem, 10.8vw, 9.8rem);
-    max-width: 900px;
+    font-size: clamp(3.7rem, 6.6vw, 6.35rem);
+    max-width: 780px;
+    text-wrap: balance;
   }
   .hero h1 em {
     color: var(--accent);
@@ -526,7 +527,8 @@
   }
 
   @media (max-width: 1040px) {
-    .hero { grid-template-columns: 1fr; padding-top: 7.4rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; padding: 7rem 0 4.5rem; }
+    .hero h1 { max-width: 820px; }
     .hero-panel { max-width: 620px; }
     .proof-strip { grid-template-columns: repeat(2, 1fr); margin-top: 0; }
     .proof-item:nth-child(2) { border-right: 0; }
@@ -541,9 +543,9 @@
     .brand-role { display: none; }
     .nav-links { display: none; }
     .nav-action { padding: .64rem .8rem; }
-    .hero { width: min(100% - 1.2rem, 1380px); padding: 6.4rem 0 3rem; }
-    .hero h1 { font-size: clamp(3.45rem, 18vw, 6rem); }
-    .hero-subtitle { font-size: 1.02rem; }
+    .hero { width: min(100% - 1.2rem, 1320px); padding: 6.1rem 0 3rem; }
+    .hero h1 { font-size: clamp(3rem, 14.5vw, 4.8rem); max-width: 11ch; }
+    .hero-subtitle { font-size: 1.02rem; margin-top: 1.25rem; }
     .hero-actions .button { width: 100%; }
     .impact-row { grid-template-columns: 78px 1fr; }
     .impact-number { font-size: 1.85rem; }
@@ -748,7 +750,7 @@
     </div>
     <div class="menu-group">
       <p>Creative</p>
-      <a class="menu-link" href="#drone-gallery"><span>07</span>Drone gallery</a>
+      <a class="menu-link" href="./drone-gallery.html"><span>07</span>Drone gallery</a>
     </div>
     <div class="menu-group">
       <p>Connect</p>
@@ -1076,37 +1078,8 @@
     </div>
     <div class="personal-grid">
       <div class="card personal-card reveal"><h3>Competition</h3><p>Ryan High School water polo, state championship runs, and two Junior Olympics appearances. I learned early how much systems, preparation, and team trust matter.</p><small>Water polo · Team performance</small></div>
-      <div class="card personal-card reveal"><h3>Creative eye</h3><p>Landscape photography, aerial and drone work, and travel keep me curious and help me see patterns outside of spreadsheets.</p><small>Photography · Drone work · Travel</small></div>
+      <div class="card personal-card reveal"><h3>Creative eye</h3><p>Landscape photography and travel keep me curious and help me see patterns outside of spreadsheets.</p><small>Photography · Travel</small></div>
       <div class="card personal-card reveal"><h3>Community</h3><p>Frisco CERT Siren Warden and amateur emergency management volunteer. I care about preparedness, public safety, and practical tools that help people act.</p><small>CERT · Emergency management</small></div>
-    </div>
-  </section>
-
-
-  <section id="drone-gallery" aria-labelledby="drone-gallery-title">
-    <div class="section-heading reveal">
-      <div>
-        <p class="eyebrow">Drone gallery</p>
-        <h2 id="drone-gallery-title">Aerial work from outside the spreadsheet.</h2>
-      </div>
-      <p class="section-lede">A dedicated home for drone videos and aerial photography. The layout is ready for files hosted with the site, embedded video, or approved cloud links once the collection is selected.</p>
-    </div>
-    <div class="drone-showcase card reveal">
-      <div class="drone-feature-placeholder">
-        <div class="drone-horizon"></div>
-        <span class="drone-play" aria-hidden="true">▶</span>
-        <div class="drone-placeholder-label">Featured drone reel placeholder</div>
-      </div>
-      <div class="drone-showcase-copy">
-        <p class="subsection-kicker">Content needed</p>
-        <h3>Featured reel or signature flight</h3>
-        <p class="placeholder-copy">Add a short introduction explaining where the footage was captured, what made the location interesting, and what viewers should notice. This space is designed for one lead video before the supporting gallery.</p>
-        <div class="drone-source-options"><span>Vercel-hosted MP4</span><span>YouTube or Vimeo embed</span><span>Google Drive link</span></div>
-      </div>
-    </div>
-    <div class="drone-gallery-grid">
-      <article class="drone-tile reveal"><div class="drone-tile-art art-one"></div><div><small>Photo series placeholder</small><h3>Landscapes</h3><p>Add a curated group of wide aerial images with brief location captions.</p></div></article>
-      <article class="drone-tile reveal"><div class="drone-tile-art art-two"></div><div><small>Video series placeholder</small><h3>Motion studies</h3><p>Add short flights, reveals, orbit shots, or edited reels that show movement.</p></div></article>
-      <article class="drone-tile reveal"><div class="drone-tile-art art-three"></div><div><small>Optional context</small><h3>Flight notes</h3><p>Add the story behind selected shoots, equipment details, or creative decisions.</p></div></article>
     </div>
   </section>
 
