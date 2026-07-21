@@ -342,7 +342,36 @@
     height: auto;
     background: #020617;
   }
-  .masonry-item.is-video { cursor: default; }
+  .video-thumb-wrap {
+    position: relative;
+    overflow: hidden;
+    background: #020617;
+  }
+  .video-thumb-wrap img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform .35s ease, opacity .25s ease;
+  }
+  .masonry-item:hover .video-thumb-wrap img,
+  .masonry-item:focus-visible .video-thumb-wrap img { transform: scale(1.025); opacity: .9; }
+  .video-play-badge {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    padding-left: 4px;
+    border: 1px solid rgba(255,255,255,.55);
+    border-radius: 50%;
+    color: white;
+    background: rgba(7,17,31,.68);
+    box-shadow: 0 14px 35px rgba(0,0,0,.36);
+    backdrop-filter: blur(8px);
+    font-size: 1.2rem;
+  }
   .masonry-caption {
     display: flex;
     align-items: center;
@@ -401,6 +430,16 @@
     border: 1px solid var(--line-strong);
     box-shadow: 0 30px 90px rgba(0,0,0,.6);
   }
+  .youtube-frame {
+    width: min(1120px, 88vw);
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--line-strong);
+    border-radius: 16px;
+    overflow: hidden;
+    background: #020617;
+    box-shadow: 0 30px 90px rgba(0,0,0,.6);
+  }
+  .youtube-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
   .lightbox-caption {
     position: absolute;
     left: 50%;
@@ -551,7 +590,7 @@
     <div id="galleryStatus" class="gallery-state card reveal">
       <div class="gallery-spinner" aria-hidden="true"></div>
       <h3>Loading gallery</h3>
-      <p>Pulling the latest shots from GitHub…</p>
+      <p>Pulling the latest photography and films…</p>
     </div>
 
     <div class="masonry" id="masonryGrid" aria-label="Photography gallery"></div>
@@ -664,27 +703,25 @@
 })();
 </script>
 
+<script src="./gallery-config.js"></script>
+
 <!-- ============================================================
-     GITHUB-DRIVEN MASONRY GALLERY
+     GOOGLE DRIVE + YOUTUBE GALLERY
 
-     Upload supported media files to the /gallery folder in GitHub.
-     A GitHub Action automatically rebuilds gallery/gallery-manifest.json,
-     and this page renders every item listed there.
+     Photos are listed by the public Google Apps Script feed from a dedicated
+     Google Drive folder. YouTube links are managed in the companion Google
+     Sheet created by setupGallery().
 
-     File naming tips:
-       - Files render in alphabetical order. Prefix with numbers
-         to control order: 01-eldorado-sunset.jpg, 02-lake.mp4
-       - The caption is generated from the filename.
-       - Photos: jpg, jpeg, png, webp, gif, avif
-       - Videos: mp4 or webm
+     Edit only gallery-config.js after deploying the Apps Script web app.
      ============================================================ -->
 <script>
 (function () {
-  var MANIFEST_URL = "./gallery/gallery-manifest.json";
+  var config = window.AW_GALLERY_CONFIG || {};
+  var API_URL = String(config.appsScriptUrl || "").trim();
   var grid    = document.getElementById("masonryGrid");
   var status  = document.getElementById("galleryStatus");
   var countEl = document.getElementById("galleryCount");
-  var items   = [];   // { name, url, type, caption }
+  var items   = [];
   var filter  = "all";
 
   function showState(title, bodyHTML) {
@@ -694,56 +731,93 @@
 
   function hideState() { status.style.display = "none"; }
 
+  function itemTitle(item) {
+    return String(item.title || item.caption || "").trim();
+  }
+
+  function itemDescription(item) {
+    return String(item.description || "").trim();
+  }
+
   function updateCount() {
-    var visible = items.filter(function (it) {
-      return filter === "all" || it.type === filter;
+    var visible = items.filter(function (item) {
+      return filter === "all" || item.type === filter;
     }).length;
-    var photos = items.filter(function (it) { return it.type === "photo"; }).length;
-    var videos = items.length - photos;
+    var photos = items.filter(function (item) { return item.type === "photo"; }).length;
+    var videos = items.filter(function (item) { return item.type === "video"; }).length;
+
     countEl.textContent = filter === "all"
       ? photos + " photos · " + videos + " videos"
       : visible + (filter === "photo" ? " photos" : " videos");
   }
 
+  function createCaption(item) {
+    var title = itemTitle(item);
+    if (!title) return null;
+
+    var caption = document.createElement("div");
+    caption.className = "masonry-caption";
+
+    var label = document.createElement("b");
+    label.textContent = title;
+
+    var kind = document.createElement("small");
+    kind.textContent = item.type === "video" ? "YouTube" : "Photo";
+
+    caption.appendChild(label);
+    caption.appendChild(kind);
+    return caption;
+  }
+
   function render() {
     grid.innerHTML = "";
-    var shown = items.filter(function (it) {
-      return filter === "all" || it.type === filter;
+    var shown = items.filter(function (item) {
+      return filter === "all" || item.type === filter;
     });
 
-    shown.forEach(function (it, idx) {
-      var tile;
-      if (it.type === "video") {
-        tile = document.createElement("div");
-        tile.className = "masonry-item is-video";
-        var vid = document.createElement("video");
-        vid.src = it.url;
-        vid.controls = true;
-        vid.preload = "metadata";
-        vid.playsInline = true;
-        tile.appendChild(vid);
+    shown.forEach(function (item, index) {
+      var tile = document.createElement("button");
+      tile.className = "masonry-item";
+      tile.type = "button";
+      tile.setAttribute(
+        "aria-label",
+        "View " + (itemTitle(item) || (item.type === "video" ? "video" : "photo"))
+      );
+
+      if (item.type === "video") {
+        var videoWrap = document.createElement("div");
+        videoWrap.className = "video-thumb-wrap";
+
+        var videoImage = document.createElement("img");
+        videoImage.src = item.thumbnailUrl;
+        videoImage.alt = "";
+        videoImage.loading = "lazy";
+        videoImage.decoding = "async";
+
+        var playBadge = document.createElement("span");
+        playBadge.className = "video-play-badge";
+        playBadge.setAttribute("aria-hidden", "true");
+        playBadge.textContent = "▶";
+
+        videoWrap.appendChild(videoImage);
+        videoWrap.appendChild(playBadge);
+        tile.appendChild(videoWrap);
       } else {
-        tile = document.createElement("button");
-        tile.className = "masonry-item";
-        tile.type = "button";
-        tile.setAttribute("aria-label", "View " + (it.caption || "photo") + " full size");
-        var img = document.createElement("img");
-        img.src = it.url;
-        img.alt = it.caption || "Photography by Alexander Worden";
-        img.loading = "lazy";
-        img.decoding = "async";
-        tile.appendChild(img);
-        tile.addEventListener("click", function () { openLightbox(shown, idx); });
+        var image = document.createElement("img");
+        image.src = item.thumbnailUrl || item.fullUrl;
+        image.alt = itemTitle(item) || "Photography by Alexander Worden";
+        image.loading = "lazy";
+        image.decoding = "async";
+        image.addEventListener("error", function () {
+          if (item.fullUrl && image.src !== item.fullUrl) image.src = item.fullUrl;
+        }, { once: true });
+        tile.appendChild(image);
       }
 
-      if (it.caption) {
-        var cap = document.createElement("div");
-        cap.className = "masonry-caption";
-        cap.innerHTML = "<b></b><small>" + (it.type === "video" ? "Video" : "Photo") + "</small>";
-        cap.querySelector("b").textContent = it.caption;
-        tile.appendChild(cap);
-      }
+      var caption = createCaption(item);
+      if (caption) tile.appendChild(caption);
 
+      tile.addEventListener("click", function () { openLightbox(shown, index); });
       grid.appendChild(tile);
     });
 
@@ -751,30 +825,43 @@
   }
 
   // ── Lightbox ─────────────────────────────────────────────────
-  var lightbox    = document.getElementById("lightbox");
-  var lbContent   = document.getElementById("lightboxContent");
-  var lbCaption   = document.getElementById("lightboxCaption");
-  var lbSet       = [];
-  var lbIndex     = 0;
-  var lastFocus   = null;
+  var lightbox  = document.getElementById("lightbox");
+  var lbContent = document.getElementById("lightboxContent");
+  var lbCaption = document.getElementById("lightboxCaption");
+  var lbSet     = [];
+  var lbIndex   = 0;
+  var lastFocus = null;
 
   function renderLightbox() {
-    var it = lbSet[lbIndex];
+    var item = lbSet[lbIndex];
+    if (!item) return;
+
     lbContent.innerHTML = "";
-    if (it.type === "video") {
-      var vid = document.createElement("video");
-      vid.src = it.url;
-      vid.controls = true;
-      vid.autoplay = true;
-      vid.playsInline = true;
-      lbContent.appendChild(vid);
+
+    if (item.type === "video") {
+      var frame = document.createElement("div");
+      frame.className = "youtube-frame";
+
+      var iframe = document.createElement("iframe");
+      iframe.src = item.embedUrl;
+      iframe.title = itemTitle(item) || "YouTube video";
+      iframe.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+
+      frame.appendChild(iframe);
+      lbContent.appendChild(frame);
     } else {
-      var img = document.createElement("img");
-      img.src = it.url;
-      img.alt = it.caption || "Photography by Alexander Worden";
-      lbContent.appendChild(img);
+      var image = document.createElement("img");
+      image.src = item.fullUrl || item.thumbnailUrl;
+      image.alt = itemTitle(item) || "Photography by Alexander Worden";
+      lbContent.appendChild(image);
     }
-    lbCaption.textContent = (it.caption || "") + "  ·  " + (lbIndex + 1) + " / " + lbSet.length;
+
+    var details = itemTitle(item);
+    var description = itemDescription(item);
+    if (description) details += (details ? " — " : "") + description;
+    lbCaption.textContent = details + "  ·  " + (lbIndex + 1) + " / " + lbSet.length;
   }
 
   function openLightbox(set, index) {
@@ -794,60 +881,124 @@
     if (lastFocus) lastFocus.focus();
   }
 
-  function stepLightbox(dir) {
+  function stepLightbox(direction) {
     if (!lbSet.length) return;
-    lbIndex = (lbIndex + dir + lbSet.length) % lbSet.length;
+    lbIndex = (lbIndex + direction + lbSet.length) % lbSet.length;
     renderLightbox();
   }
 
   document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
   document.getElementById("lightboxPrev").addEventListener("click", function () { stepLightbox(-1); });
   document.getElementById("lightboxNext").addEventListener("click", function () { stepLightbox(1); });
-  lightbox.addEventListener("click", function (e) {
-    if (e.target === lightbox) closeLightbox();
+  lightbox.addEventListener("click", function (event) {
+    if (event.target === lightbox) closeLightbox();
   });
-  document.addEventListener("keydown", function (e) {
+  document.addEventListener("keydown", function (event) {
     if (!lightbox.classList.contains("open")) return;
-    if (e.key === "Escape") closeLightbox();
-    if (e.key === "ArrowLeft") stepLightbox(-1);
-    if (e.key === "ArrowRight") stepLightbox(1);
+    if (event.key === "Escape") closeLightbox();
+    if (event.key === "ArrowLeft") stepLightbox(-1);
+    if (event.key === "ArrowRight") stepLightbox(1);
   });
 
   // ── Filters ──────────────────────────────────────────────────
   document.querySelectorAll(".filter-chip").forEach(function (chip) {
     chip.addEventListener("click", function () {
-      document.querySelectorAll(".filter-chip").forEach(function (c) { c.classList.remove("active"); });
+      document.querySelectorAll(".filter-chip").forEach(function (candidate) {
+        candidate.classList.remove("active");
+      });
       chip.classList.add("active");
       filter = chip.getAttribute("data-filter");
       render();
     });
   });
 
-  // ── Load generated manifest ──────────────────────────────────
+  // ── Load the public Apps Script feed using JSONP ─────────────
   function loadGallery() {
-    fetch(MANIFEST_URL, { cache: "no-store" })
-      .then(function (r) {
-        if (!r.ok) throw new Error("Gallery manifest " + r.status);
-        return r.json();
-      })
-      .then(function (manifest) {
-        items = Array.isArray(manifest) ? manifest : (manifest.items || []);
-        if (!items.length) {
-          showState("Nothing here yet",
-            "<p>Upload jpg, png, webp, gif, avif, mp4, or webm files to the <code>gallery</code> folder in GitHub. " +
-            "The gallery will update automatically after the GitHub workflow finishes.</p>");
-          countEl.textContent = "";
-          return;
-        }
-        hideState();
-        render();
-      })
-      .catch(function (err) {
-        showState("Couldn't load the gallery",
-          "<p>The gallery manifest is unavailable (" + err.message + "). " +
-          "Run the Update photography gallery workflow in GitHub, then refresh.</p>");
+    if (!API_URL || API_URL.indexOf("PASTE_YOUR_") !== -1) {
+      showState(
+        "Gallery connection needed",
+        "<p>Deploy the included Google Apps Script as a public web app, then paste its <code>/exec</code> URL into <code>gallery-config.js</code>.</p>"
+      );
+      countEl.textContent = "";
+      return;
+    }
+
+    var callbackName = "__awGalleryCallback_" + Date.now();
+    var loader = document.createElement("script");
+    var finished = false;
+    var timeoutId;
+
+    function cleanUp() {
+      clearTimeout(timeoutId);
+      try { delete window[callbackName]; } catch (error) { window[callbackName] = undefined; }
+      if (loader.parentNode) loader.parentNode.removeChild(loader);
+    }
+
+    function fail(message) {
+      if (finished) return;
+      finished = true;
+      cleanUp();
+      showState(
+        "Couldn't load the gallery",
+        "<p>" + message + " Check the Apps Script deployment and confirm it is available to anyone, then refresh.</p>"
+      );
+      countEl.textContent = "";
+    }
+
+    window[callbackName] = function (payload) {
+      if (finished) return;
+
+      if (!payload || payload.ok === false) {
+        finished = true;
+        cleanUp();
+        showState(
+          "Couldn't load the gallery",
+          "<p>" + (payload && payload.error ? payload.error : "The gallery feed returned an error.") +
+          " Check the Apps Script deployment and confirm it is available to anyone, then refresh.</p>"
+        );
         countEl.textContent = "";
-      });
+        return;
+      }
+
+      finished = true;
+      cleanUp();
+
+      items = Array.isArray(payload.items)
+        ? payload.items.filter(function (item) {
+            return item && (item.type === "photo" || item.type === "video");
+          })
+        : [];
+
+      if (payload.warnings && payload.warnings.length) {
+        console.warn("Gallery feed warnings:", payload.warnings);
+      }
+
+      if (!items.length) {
+        showState(
+          "Nothing here yet",
+          "<p>Add photos to the portfolio Drive folder or add public or unlisted YouTube links to the Videos spreadsheet. New items will appear automatically.</p>"
+        );
+        countEl.textContent = "";
+        return;
+      }
+
+      hideState();
+      render();
+    };
+
+    timeoutId = setTimeout(function () {
+      fail("The gallery feed took too long to respond.");
+    }, 20000);
+
+    loader.async = true;
+    loader.onerror = function () {
+      fail("The gallery feed could not be reached.");
+    };
+    loader.src = API_URL +
+      (API_URL.indexOf("?") === -1 ? "?" : "&") +
+      "callback=" + encodeURIComponent(callbackName) +
+      "&t=" + Date.now();
+    document.head.appendChild(loader);
   }
 
   loadGallery();
