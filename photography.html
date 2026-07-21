@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Alexander Worden photography — aerial and ground photography, landscape footage, and personal creative work." />
+<meta name="theme-color" content="#07111f" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxMjIzM2EiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiMwZDFiMmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDcxMTFmIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJzdHJva2UiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzYzYzRmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmM2I4NGMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJzaGFkb3ciIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iMyIgc3RkRGV2aWF0aW9uPSIzIiBmbG9vZC1jb2xvcj0iIzAwMDAwMCIgZmxvb2Qtb3BhY2l0eT0iMC4zNSIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHg9IjQiIHk9IjQiIHdpZHRoPSI1NiIgaGVpZ2h0PSI1NiIgcng9IjE2IiBmaWxsPSJ1cmwoI2JnKSIgc3Ryb2tlPSJ1cmwoI3N0cm9rZSkiIHN0cm9rZS13aWR0aD0iMi41Ii8+CiAgPGNpcmNsZSBjeD0iMTgiIGN5PSIxNiIgcj0iMTAiIGZpbGw9IiM2M2M0ZmYiIG9wYWNpdHk9IjAuMTIiLz4KICA8Y2lyY2xlIGN4PSI0OSIgY3k9IjQ5IiByPSIxMSIgZmlsbD0iI2YzYjg0YyIgb3BhY2l0eT0iMC4xMCIvPgogIDx0ZXh0IHg9IjMyIiB5PSIzOSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsICdUaW1lcyBOZXcgUm9tYW4nLCBzZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgbGV0dGVyLXNwYWNpbmc9IjEiIGZpbGw9IiNmMWVhZGYiIGZpbHRlcj0idXJsKCNzaGFkb3cpIj5BVzwvdGV4dD4KPC9zdmc+Cg==" />
+<link rel="alternate icon" type="image/svg+xml" href="./aw-favicon.svg" />
+<link rel="apple-touch-icon" href="./aw-favicon.svg" />
+<title>Photography — Alexander Worden</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #07111f;
+    --ink-2: #0d1b2f;
+    --ink-3: #12233a;
+    --panel: rgba(18, 35, 58, 0.74);
+    --panel-strong: rgba(24, 48, 78, 0.92);
+    --line: rgba(142, 184, 217, 0.18);
+    --line-strong: rgba(142, 184, 217, 0.34);
+    --text: #f1eadf;
+    --soft: #b6c5d1;
+    --muted: #7e94a8;
+    --accent: #63c4ff;
+    --accent-dark: #1d8cc7;
+    --gold: #f3b84c;
+    --green: #55d28f;
+    --red: #ff7a7a;
+    --shadow: 0 24px 70px rgba(0,0,0,0.35);
+    --radius: 28px;
+    --max: 1180px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at 14% 8%, rgba(99,196,255,0.18), transparent 31rem),
+      radial-gradient(circle at 82% 4%, rgba(243,184,76,0.10), transparent 28rem),
+      radial-gradient(circle at 72% 55%, rgba(85,210,143,0.09), transparent 34rem),
+      linear-gradient(180deg, #07111f 0%, #0a1525 48%, #07111f 100%);
+    color: var(--text);
+    font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.032) 1px, transparent 1px),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.20'/%3E%3C/svg%3E");
+    background-size: 72px 72px, 72px 72px, 260px 260px;
+    mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
+  }
+
+  a { color: inherit; }
+  strong { color: var(--text); font-weight: 650; }
+  .skip-link {
+    position: absolute;
+    left: -999px;
+    top: 1rem;
+    background: var(--accent);
+    color: #06101e;
+    padding: .8rem 1rem;
+    border-radius: 999px;
+    z-index: 999;
+  }
+  .skip-link:focus { left: 1rem; }
+
+  nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem clamp(1rem, 4vw, 3rem);
+    background: rgba(7,17,31,0.72);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(18px);
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: .8rem;
+    text-decoration: none;
+  }
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line-strong);
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(99,196,255,0.22), rgba(243,184,76,0.10));
+    box-shadow: 0 10px 30px rgba(99,196,255,0.08);
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+  }
+  .brand-copy { display: flex; flex-direction: column; line-height: 1.05; }
+  .brand-name { font-size: .9rem; font-weight: 650; letter-spacing: .02em; }
+  .brand-role { font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(.7rem, 2vw, 1.8rem);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .nav-links a {
+    color: var(--soft);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: .45rem 0;
+    border-bottom: 1px solid transparent;
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--accent); border-color: var(--accent); }
+  .nav-action {
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: .66rem;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    border: 1px solid rgba(99,196,255,0.35);
+    color: var(--accent);
+    padding: .72rem 1rem;
+    border-radius: 999px;
+    background: rgba(99,196,255,0.08);
+  }
+
+  main { position: relative; }
+  section, .section-wrap {
+    width: min(var(--max), calc(100% - 2rem));
+    margin-inline: auto;
+    padding: clamp(4.2rem, 8vw, 7.5rem) 0;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: .7rem;
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1rem;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 34px;
+    height: 1px;
+    background: currentColor;
+    opacity: .7;
+  }
+  .section-heading {
+    display: grid;
+    grid-template-columns: minmax(0, .95fr) minmax(260px, .55fr);
+    gap: 2rem;
+    align-items: end;
+    margin-bottom: 2.5rem;
+  }
+  h1, h2, h3 { margin: 0; line-height: 1.02; }
+  h1, h2 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; letter-spacing: -.035em; }
+  h2 { font-size: clamp(2.45rem, 5.5vw, 4.7rem); }
+  .section-lede { color: var(--soft); margin: 0; max-width: 52ch; font-size: 1.03rem; }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    min-height: 48px;
+    border-radius: 999px;
+    padding: .82rem 1.25rem;
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    border: 1px solid var(--line-strong);
+    transition: transform .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
+    cursor: pointer;
+  }
+  .button:hover { transform: translateY(-2px); }
+  .button.primary {
+    background: linear-gradient(135deg, var(--accent), #9be1ff);
+    color: #04101b;
+    border-color: transparent;
+    box-shadow: 0 14px 40px rgba(99,196,255,0.24);
+    font-weight: 650;
+  }
+  .button.secondary { color: var(--text); background: rgba(255,255,255,0.035); }
+  .button.secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  .card {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    border-radius: var(--radius);
+    box-shadow: 0 18px 60px rgba(0,0,0,0.20);
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    width: min(var(--max), calc(100% - 2rem));
+    margin-inline: auto;
+    padding: 1.4rem 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: .66rem;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  /* BURGER MENU */
+  .nav-controls { display: flex; align-items: center; gap: .7rem; }
+  .menu-toggle { min-height: 44px; display: inline-flex; align-items: center; gap: .7rem; border: 1px solid var(--line-strong); border-radius: 999px; padding: .64rem .9rem .64rem 1rem; background: rgba(255,255,255,.04); color: var(--text); cursor: pointer; font: inherit; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+  .menu-toggle:hover { border-color: rgba(99,196,255,.65); background: rgba(99,196,255,.09); transform: translateY(-1px); }
+  .menu-label { font-family: 'DM Mono', monospace; font-size: .67rem; letter-spacing: .12em; text-transform: uppercase; }
+  .burger-icon { width: 20px; display: grid; gap: 4px; }
+  .burger-icon span { display: block; width: 100%; height: 1px; background: currentColor; transition: transform .25s ease, opacity .2s ease; transform-origin: center; }
+  body.menu-open .burger-icon span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+  body.menu-open .burger-icon span:nth-child(2) { opacity: 0; }
+  body.menu-open .burger-icon span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+  body.menu-open { overflow: hidden; }
+  .menu-backdrop { position: fixed; inset: 0; z-index: 80; background: rgba(1,7,14,.68); opacity: 0; visibility: hidden; backdrop-filter: blur(4px); transition: opacity .25s ease, visibility .25s ease; }
+  .menu-backdrop.open { opacity: 1; visibility: visible; }
+  .menu-drawer { position: fixed; top: 0; right: 0; z-index: 90; width: min(460px, 92vw); height: 100dvh; display: grid; grid-template-rows: auto 1fr auto; background: linear-gradient(160deg, rgba(18,35,58,.99), rgba(7,17,31,.99)); border-left: 1px solid var(--line-strong); box-shadow: -28px 0 80px rgba(0,0,0,.42); transform: translateX(102%); visibility: hidden; transition: transform .32s cubic-bezier(.2,.75,.25,1), visibility .32s ease; }
+  .menu-drawer.open { transform: translateX(0); visibility: visible; }
+  .menu-drawer-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding: 1.5rem; border-bottom: 1px solid var(--line); }
+  .menu-kicker, .menu-group > p { color: var(--accent); font-family: 'DM Mono', monospace; font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; }
+  .menu-title { margin-top: .35rem; font-family: 'DM Serif Display', serif; font-size: 1.8rem; line-height: 1; }
+  .menu-close { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 999px; color: var(--soft); background: rgba(255,255,255,.035); font-size: 1.5rem; cursor: pointer; }
+  .menu-close:hover { color: var(--accent); border-color: var(--accent); }
+  .menu-drawer-body { padding: 1rem 1.5rem 1.4rem; overflow-y: auto; }
+  .menu-group { padding: .8rem 0 1rem; border-bottom: 1px solid var(--line); }
+  .menu-group:last-child { border-bottom: 0; }
+  .menu-group > p { margin: 0 0 .55rem; }
+  .menu-link { display: grid; grid-template-columns: 34px 1fr; align-items: center; gap: .5rem; padding: .7rem 0; color: var(--soft); text-decoration: none; font-size: 1.08rem; transition: color .2s ease, transform .2s ease; }
+  .menu-link > span { color: var(--muted); font: .66rem 'DM Mono', monospace; letter-spacing: .08em; }
+  .menu-link:hover, .menu-link.active { color: var(--accent); transform: translateX(4px); }
+  .menu-link-sub { padding-left: 1.1rem; font-size: .92rem; color: var(--muted); }
+  .menu-link-external { color: var(--gold); }
+  .menu-drawer-foot { display: grid; gap: .35rem; padding: 1.2rem 1.5rem 1.5rem; border-top: 1px solid var(--line); color: var(--muted); font: .62rem 'DM Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+  .menu-drawer-foot a { color: var(--soft); text-decoration: none; text-transform: none; letter-spacing: 0; font-size: .72rem; }
+
+  .subsection-kicker { margin: 0 0 .45rem; color: var(--gold); font: .67rem 'DM Mono', monospace; letter-spacing: .16em; text-transform: uppercase; }
+
+  /* ============================================================
+     PHOTOGRAPHY MASONRY GALLERY
+     ============================================================ */
+  .gallery-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: .8rem;
+    margin: 0 0 1.4rem;
+  }
+  .gallery-filters { display: flex; flex-wrap: wrap; gap: .45rem; }
+  .filter-chip {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: .45rem .85rem;
+    color: var(--soft);
+    background: rgba(255,255,255,.03);
+    font: .64rem 'DM Mono', monospace;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color .2s ease, border-color .2s ease, background .2s ease;
+  }
+  .filter-chip:hover { color: var(--accent); border-color: var(--accent); }
+  .filter-chip.active {
+    color: #04101b;
+    background: linear-gradient(135deg, var(--accent), #9be1ff);
+    border-color: transparent;
+    font-weight: 500;
+  }
+  .gallery-count { color: var(--muted); font: .64rem 'DM Mono', monospace; letter-spacing: .09em; text-transform: uppercase; }
+
+  .masonry {
+    columns: 3;
+    column-gap: 1rem;
+  }
+  .masonry-item {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0 0 1rem;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(18,35,58,.58);
+    break-inside: avoid;
+    cursor: zoom-in;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .masonry-item:hover,
+  .masonry-item:focus-visible {
+    transform: translateY(-4px);
+    border-color: rgba(99,196,255,.5);
+    box-shadow: 0 18px 50px rgba(0,0,0,.35);
+  }
+  .masonry-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .masonry-item img,
+  .masonry-item video {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #020617;
+  }
+  .masonry-item.is-video { cursor: default; }
+  .masonry-caption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .6rem;
+    padding: .7rem .9rem .8rem;
+    border-top: 1px solid var(--line);
+  }
+  .masonry-caption b { font-size: .88rem; font-weight: 500; color: var(--text); line-height: 1.25; }
+  .masonry-caption small { flex: 0 0 auto; color: var(--gold); font: .58rem 'DM Mono', monospace; letter-spacing: .09em; text-transform: uppercase; }
+
+  .gallery-state {
+    padding: clamp(1.5rem, 4vw, 2.6rem);
+    text-align: center;
+  }
+  .gallery-state h3 { font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: .7rem; }
+  .gallery-state p { color: var(--soft); max-width: 58ch; margin: 0 auto .6rem; }
+  .gallery-state code {
+    font-family: 'DM Mono', monospace;
+    font-size: .82rem;
+    color: var(--accent);
+    background: rgba(99,196,255,.08);
+    border: 1px solid rgba(99,196,255,.22);
+    border-radius: 8px;
+    padding: .12rem .45rem;
+  }
+  .gallery-spinner {
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 1rem;
+    border: 2px solid var(--line-strong);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 3rem);
+    background: rgba(1,7,14,.92);
+    backdrop-filter: blur(10px);
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img,
+  .lightbox video {
+    max-width: min(1200px, 100%);
+    max-height: 84vh;
+    border-radius: 16px;
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 30px 90px rgba(0,0,0,.6);
+  }
+  .lightbox-caption {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(.8rem, 3vw, 1.6rem);
+    transform: translateX(-50%);
+    max-width: min(90vw, 640px);
+    color: var(--soft);
+    font: .72rem 'DM Mono', monospace;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .lightbox-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--text);
+    background: rgba(7,17,31,.7);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .lightbox-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .lightbox-prev { left: clamp(.6rem, 2vw, 1.4rem); }
+  .lightbox-next { right: clamp(.6rem, 2vw, 1.4rem); }
+  .lightbox-close {
+    position: absolute;
+    top: clamp(.8rem, 2vw, 1.4rem);
+    right: clamp(.8rem, 2vw, 1.4rem);
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--text);
+    background: rgba(7,17,31,.7);
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+  .lightbox-close:hover { color: var(--accent); border-color: var(--accent); }
+
+  @media (max-width: 1040px) {
+    .section-heading { grid-template-columns: 1fr; }
+    .masonry { columns: 2; }
+  }
+  @media (max-width: 760px) {
+    nav { padding: .75rem 1rem; }
+    .brand-role { display: none; }
+    .nav-links { display: none; }
+    .nav-action { display: none; }
+    .menu-toggle { padding: .62rem .75rem; }
+    .menu-label { display: none; }
+    section, .section-wrap { width: min(100% - 1.2rem, var(--max)); padding: 4.6rem 0; }
+    .masonry { columns: 1; }
+    footer { flex-direction: column; text-align: center; }
+  }
+
+  @media print {
+    body { background: white; color: #111; }
+    nav, .menu-drawer, .menu-backdrop, .lightbox, body::before { display: none !important; }
+    section, .section-wrap, footer { width: 100%; padding: 1rem 0; margin: 0; }
+    h2 { color: #111; }
+    .card, .masonry-item { border: 1px solid #ddd; background: white; box-shadow: none; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav aria-label="Primary navigation">
+  <a class="brand" href="./index.html" aria-label="Return to Alexander Worden portfolio">
+    <span class="brand-mark">AW</span>
+    <span class="brand-copy">
+      <span class="brand-name">Alexander Worden</span>
+      <span class="brand-role">Ops · Analytics · Systems</span>
+    </span>
+  </a>
+  <div class="nav-controls">
+    <a class="nav-action" href="mailto:alexanderjworden@gmail.com">Email Me</a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open site menu" aria-controls="siteMenu" aria-expanded="false">
+      <span class="menu-label">Menu</span>
+      <span class="burger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+</nav>
+<div class="menu-backdrop" id="menuBackdrop" aria-hidden="true"></div>
+<aside class="menu-drawer" id="siteMenu" aria-hidden="true" aria-label="Site menu">
+  <div class="menu-drawer-head">
+    <div>
+      <div class="menu-kicker">Alexander Worden</div>
+      <div class="menu-title">Explore the portfolio</div>
+    </div>
+    <button class="menu-close" id="menuClose" type="button" aria-label="Close site menu">×</button>
+  </div>
+  <div class="menu-drawer-body">
+    <div class="menu-group">
+      <p>Main</p>
+      <a class="menu-link" href="./index.html#top"><span>01</span>Overview</a>
+      <a class="menu-link" href="./index.html#impact"><span>02</span>Impact</a>
+      <a class="menu-link" href="./index.html#projects"><span>03</span>Projects</a>
+      <a class="menu-link menu-link-sub" href="./index.html#demos"><span>↳</span>Demos</a>
+      <a class="menu-link" href="./index.html#experience"><span>04</span>Experience</a>
+      <a class="menu-link" href="./index.html#skills"><span>05</span>Skills</a>
+      <a class="menu-link" href="./index.html#credentials"><span>06</span>Credentials</a>
+    </div>
+    <div class="menu-group">
+      <p>Creative</p>
+      <a class="menu-link active" href="./photography.html" aria-current="page"><span>07</span>Photography</a>
+    </div>
+    <div class="menu-group">
+      <p>Connect</p>
+      <a class="menu-link" href="./index.html#contact"><span>08</span>Contact</a>
+      <a class="menu-link menu-link-external" href="./Alex_Worden_Resume_2026.docx" download><span>↓</span>Download résumé</a>
+    </div>
+  </div>
+  <div class="menu-drawer-foot">
+    <span>Operations · Analytics · Data Engineering</span>
+    <a href="mailto:alexanderjworden@gmail.com">alexanderjworden@gmail.com</a>
+  </div>
+</aside>
+
+<main id="main">
+  <section id="photography" aria-labelledby="photography-title" style="padding-top:clamp(8.5rem,12vw,10rem);">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">Personal creative work</p>
+        <h2 id="photography-title">Photography, from the ground and the air.</h2>
+      </div>
+      <p class="section-lede">A separate collection of aerial and ground photography, short flights, and visual experiments outside of my professional operations and analytics work.</p>
+    </div>
+
+    <div class="gallery-toolbar reveal">
+      <div class="gallery-filters" role="group" aria-label="Filter gallery">
+        <button class="filter-chip active" type="button" data-filter="all">All</button>
+        <button class="filter-chip" type="button" data-filter="photo">Photos</button>
+        <button class="filter-chip" type="button" data-filter="video">Videos</button>
+      </div>
+      <span class="gallery-count" id="galleryCount" aria-live="polite"></span>
+    </div>
+
+    <div id="galleryStatus" class="gallery-state card reveal">
+      <div class="gallery-spinner" aria-hidden="true"></div>
+      <h3>Loading gallery</h3>
+      <p>Pulling the latest shots from GitHub…</p>
+    </div>
+
+    <div class="masonry" id="masonryGrid" aria-label="Photography gallery"></div>
+  </section>
+</main>
+
+<footer>
+  <span>© <span id="year"></span> Alexander Worden · Frisco, TX</span>
+  <span>Operations · Analytics · Data Engineering</span>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close viewer">×</button>
+  <button class="lightbox-btn lightbox-prev" id="lightboxPrev" type="button" aria-label="Previous item">‹</button>
+  <div id="lightboxContent"></div>
+  <button class="lightbox-btn lightbox-next" id="lightboxNext" type="button" aria-label="Next item">›</button>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<!-- ============================================================
+     VISITOR TRACKER — invisible, no UI impact whatsoever
+     ============================================================ -->
+<script>
+(function () {
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbypZXzPYXnfl6I4ELPElZheq0B4pGwxXhffE2mwS21jG12zQi8s_tjanagjzSwITZroOA/exec";
+
+  if (!ENDPOINT || ENDPOINT === "YOUR_DEPLOYMENT_URL_HERE") return;
+
+  var startTime = Date.now();
+  var pingSent  = false;
+
+  function parseUA(ua) {
+    var device =
+      /Mobi|Android|iPhone|iPad|iPod/i.test(ua) ? "Mobile" :
+      /Tablet|iPad/i.test(ua)                    ? "Tablet" : "Desktop";
+
+    var os =
+      /Windows NT 10|Windows NT 11/.test(ua) ? "Windows 10/11" :
+      /Windows/.test(ua)                     ? "Windows (older)" :
+      /iPhone|iPad|iPod/.test(ua)            ? "iOS" :
+      /Android/.test(ua)                     ? "Android" :
+      /Mac OS X/.test(ua)                    ? "macOS" :
+      /Linux/.test(ua)                       ? "Linux" : "Unknown";
+
+    var browser =
+      /Edg\//.test(ua)     ? "Edge" :
+      /OPR\/|Opera/.test(ua) ? "Opera" :
+      /Chrome\//.test(ua)  ? "Chrome" :
+      /Firefox\//.test(ua) ? "Firefox" :
+      /Safari\//.test(ua)  ? "Safari" : "Unknown";
+
+    return { device: device, os: os, browser: browser };
+  }
+
+  function sendPing(eventType, duration) {
+    var ua   = parseUA(navigator.userAgent);
+    var base = {
+      event:   eventType || "load",
+      device:  ua.device,
+      os:      ua.os,
+      browser: ua.browser,
+      screen:  screen.width + "x" + screen.height,
+      tz:      (Intl && Intl.DateTimeFormat)
+                 ? Intl.DateTimeFormat().resolvedOptions().timeZone
+                 : "",
+      lang:    navigator.language || "",
+      ref:     document.referrer  || "",
+      url:     window.location.href,
+      duration: duration != null ? String(duration) : ""
+    };
+
+    fetch("https://ipapi.co/json/", { cache: "no-store" })
+      .then(function (r) { return r.json(); })
+      .then(function (geo) {
+        base.ip      = geo.ip           || "";
+        base.city    = geo.city         || "";
+        base.region  = geo.region       || "";
+        base.country = geo.country_name || "";
+        base.isp     = geo.org          || "";
+      })
+      .catch(function () {})
+      .finally(function () {
+        var qs = Object.keys(base)
+          .map(function (k) {
+            return encodeURIComponent(k) + "=" + encodeURIComponent(base[k]);
+          })
+          .join("&");
+        fetch(ENDPOINT + "?" + qs, { mode: "no-cors" }).catch(function () {});
+      });
+  }
+
+  window.addEventListener("load", function () {
+    if (!pingSent) {
+      pingSent = true;
+      sendPing("load", null);
+    }
+  });
+
+  function onExit() {
+    var duration = Math.round((Date.now() - startTime) / 1000);
+    sendPing("exit", duration);
+  }
+
+  window.addEventListener("beforeunload", onExit);
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") onExit();
+  });
+})();
+</script>
+
+<!-- ============================================================
+     GITHUB-DRIVEN MASONRY GALLERY
+
+     Upload supported media files to the /gallery folder in GitHub.
+     A GitHub Action automatically rebuilds gallery/gallery-manifest.json,
+     and this page renders every item listed there.
+
+     File naming tips:
+       - Files render in alphabetical order. Prefix with numbers
+         to control order: 01-eldorado-sunset.jpg, 02-lake.mp4
+       - The caption is generated from the filename.
+       - Photos: jpg, jpeg, png, webp, gif, avif
+       - Videos: mp4 or webm
+     ============================================================ -->
+<script>
+(function () {
+  var MANIFEST_URL = "./gallery/gallery-manifest.json";
+  var grid    = document.getElementById("masonryGrid");
+  var status  = document.getElementById("galleryStatus");
+  var countEl = document.getElementById("galleryCount");
+  var items   = [];   // { name, url, type, caption }
+  var filter  = "all";
+
+  function showState(title, bodyHTML) {
+    status.style.display = "";
+    status.innerHTML = "<h3>" + title + "</h3>" + bodyHTML;
+  }
+
+  function hideState() { status.style.display = "none"; }
+
+  function updateCount() {
+    var visible = items.filter(function (it) {
+      return filter === "all" || it.type === filter;
+    }).length;
+    var photos = items.filter(function (it) { return it.type === "photo"; }).length;
+    var videos = items.length - photos;
+    countEl.textContent = filter === "all"
+      ? photos + " photos · " + videos + " videos"
+      : visible + (filter === "photo" ? " photos" : " videos");
+  }
+
+  function render() {
+    grid.innerHTML = "";
+    var shown = items.filter(function (it) {
+      return filter === "all" || it.type === filter;
+    });
+
+    shown.forEach(function (it, idx) {
+      var tile;
+      if (it.type === "video") {
+        tile = document.createElement("div");
+        tile.className = "masonry-item is-video";
+        var vid = document.createElement("video");
+        vid.src = it.url;
+        vid.controls = true;
+        vid.preload = "metadata";
+        vid.playsInline = true;
+        tile.appendChild(vid);
+      } else {
+        tile = document.createElement("button");
+        tile.className = "masonry-item";
+        tile.type = "button";
+        tile.setAttribute("aria-label", "View " + (it.caption || "photo") + " full size");
+        var img = document.createElement("img");
+        img.src = it.url;
+        img.alt = it.caption || "Photography by Alexander Worden";
+        img.loading = "lazy";
+        img.decoding = "async";
+        tile.appendChild(img);
+        tile.addEventListener("click", function () { openLightbox(shown, idx); });
+      }
+
+      if (it.caption) {
+        var cap = document.createElement("div");
+        cap.className = "masonry-caption";
+        cap.innerHTML = "<b></b><small>" + (it.type === "video" ? "Video" : "Photo") + "</small>";
+        cap.querySelector("b").textContent = it.caption;
+        tile.appendChild(cap);
+      }
+
+      grid.appendChild(tile);
+    });
+
+    updateCount();
+  }
+
+  // ── Lightbox ─────────────────────────────────────────────────
+  var lightbox    = document.getElementById("lightbox");
+  var lbContent   = document.getElementById("lightboxContent");
+  var lbCaption   = document.getElementById("lightboxCaption");
+  var lbSet       = [];
+  var lbIndex     = 0;
+  var lastFocus   = null;
+
+  function renderLightbox() {
+    var it = lbSet[lbIndex];
+    lbContent.innerHTML = "";
+    if (it.type === "video") {
+      var vid = document.createElement("video");
+      vid.src = it.url;
+      vid.controls = true;
+      vid.autoplay = true;
+      vid.playsInline = true;
+      lbContent.appendChild(vid);
+    } else {
+      var img = document.createElement("img");
+      img.src = it.url;
+      img.alt = it.caption || "Photography by Alexander Worden";
+      lbContent.appendChild(img);
+    }
+    lbCaption.textContent = (it.caption || "") + "  ·  " + (lbIndex + 1) + " / " + lbSet.length;
+  }
+
+  function openLightbox(set, index) {
+    lbSet = set;
+    lbIndex = index;
+    lastFocus = document.activeElement;
+    lightbox.classList.add("open");
+    document.body.style.overflow = "hidden";
+    renderLightbox();
+    document.getElementById("lightboxClose").focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    lbContent.innerHTML = "";
+    document.body.style.overflow = "";
+    if (lastFocus) lastFocus.focus();
+  }
+
+  function stepLightbox(dir) {
+    if (!lbSet.length) return;
+    lbIndex = (lbIndex + dir + lbSet.length) % lbSet.length;
+    renderLightbox();
+  }
+
+  document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
+  document.getElementById("lightboxPrev").addEventListener("click", function () { stepLightbox(-1); });
+  document.getElementById("lightboxNext").addEventListener("click", function () { stepLightbox(1); });
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (!lightbox.classList.contains("open")) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft") stepLightbox(-1);
+    if (e.key === "ArrowRight") stepLightbox(1);
+  });
+
+  // ── Filters ──────────────────────────────────────────────────
+  document.querySelectorAll(".filter-chip").forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      document.querySelectorAll(".filter-chip").forEach(function (c) { c.classList.remove("active"); });
+      chip.classList.add("active");
+      filter = chip.getAttribute("data-filter");
+      render();
+    });
+  });
+
+  // ── Load generated manifest ──────────────────────────────────
+  function loadGallery() {
+    fetch(MANIFEST_URL, { cache: "no-store" })
+      .then(function (r) {
+        if (!r.ok) throw new Error("Gallery manifest " + r.status);
+        return r.json();
+      })
+      .then(function (manifest) {
+        items = Array.isArray(manifest) ? manifest : (manifest.items || []);
+        if (!items.length) {
+          showState("Nothing here yet",
+            "<p>Upload jpg, png, webp, gif, avif, mp4, or webm files to the <code>gallery</code> folder in GitHub. " +
+            "The gallery will update automatically after the GitHub workflow finishes.</p>");
+          countEl.textContent = "";
+          return;
+        }
+        hideState();
+        render();
+      })
+      .catch(function (err) {
+        showState("Couldn't load the gallery",
+          "<p>The gallery manifest is unavailable (" + err.message + "). " +
+          "Run the Update photography gallery workflow in GitHub, then refresh.</p>");
+        countEl.textContent = "";
+      });
+  }
+
+  loadGallery();
+})();
+</script>
+
+<script>
+  // ── Reveal-on-scroll ─────────────────────────────────────────
+  var revealObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(function (el, index) {
+    el.style.transitionDelay = Math.min(index * 28, 180) + 'ms';
+    revealObserver.observe(el);
+  });
+
+  // ── Burger drawer controls ────────────────────────────────────
+  var menuToggle = document.getElementById('menuToggle');
+  var menuClose = document.getElementById('menuClose');
+  var siteMenu = document.getElementById('siteMenu');
+  var menuBackdrop = document.getElementById('menuBackdrop');
+  var lastMenuFocus = null;
+
+  function openSiteMenu() {
+    lastMenuFocus = document.activeElement;
+    document.body.classList.add('menu-open');
+    siteMenu.classList.add('open');
+    menuBackdrop.classList.add('open');
+    siteMenu.setAttribute('aria-hidden', 'false');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    menuToggle.setAttribute('aria-label', 'Close site menu');
+    setTimeout(function () { menuClose.focus(); }, 80);
+  }
+
+  function closeSiteMenu(returnFocus) {
+    document.body.classList.remove('menu-open');
+    siteMenu.classList.remove('open');
+    menuBackdrop.classList.remove('open');
+    siteMenu.setAttribute('aria-hidden', 'true');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Open site menu');
+    if (returnFocus && lastMenuFocus) lastMenuFocus.focus();
+  }
+
+  menuToggle.addEventListener('click', function () {
+    if (siteMenu.classList.contains('open')) closeSiteMenu(true);
+    else openSiteMenu();
+  });
+  menuClose.addEventListener('click', function () { closeSiteMenu(true); });
+  menuBackdrop.addEventListener('click', function () { closeSiteMenu(true); });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && siteMenu.classList.contains('open') && !document.getElementById('lightbox').classList.contains('open')) closeSiteMenu(true);
+  });
+  document.querySelectorAll('.menu-link[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function () { closeSiteMenu(false); });
+  });
+
+  // ── Footer year ───────────────────────────────────────────────
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

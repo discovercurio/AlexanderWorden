@@ -1,0 +1,22 @@
+AUTOMATED DAILY OPERATIONS REPORT
+
+Recommended project-card title
+Automated Daily Operations Report
+
+One-line summary
+Designed and automated a daily executive report that turned operational performance data into a clear, email-ready briefing for leadership.
+
+Portfolio description
+I built an automated daily reporting workflow that consolidated order volume, on-time performance, revenue, customer ratings, fulfillment issues, and market-level results into a single leadership-ready report. The deliverable was designed to make operational problems visible quickly, prioritize underperforming markets, and reduce the time required to prepare recurring updates.
+
+Suggested tags
+Operations Analytics · Reporting Automation · Data Visualization · Executive Communication
+
+Recommended presentation
+Use daily-operations-report-card.webp as the project thumbnail. Link the card to daily-operations-report-demo.html in a new tab or a modal. The full screenshot is useful as a fallback for static hosting or a case-study page.
+
+Suggested link text
+View sanitized report
+
+Accessibility alt text
+Dark-themed automated operations report showing order volume, on-time pickup and dropoff rates, revenue, customer ratings, fulfillment issues, and market performance.
