@@ -560,13 +560,138 @@
 
   @media print {
     body { background: white; color: #111; }
-    nav, .hero-panel, .hero-actions, .contact .button, body::before { display: none !important; }
+    nav, .menu-drawer, .menu-backdrop, .hero-panel, .hero-actions, .contact .button, body::before { display: none !important; }
     section, .section-wrap, .hero, .proof-strip, footer { width: 100%; padding: 1rem 0; margin: 0; }
     .hero { min-height: auto; display: block; }
     .hero h1, h2 { color: #111; }
     .card, .job, .metric, .proof-strip { border: 1px solid #ddd; background: white; box-shadow: none; }
     .reveal { opacity: 1; transform: none; }
   }
+
+
+  /* BURGER MENU */
+  .nav-controls { display: flex; align-items: center; gap: .7rem; }
+  .menu-toggle { min-height: 44px; display: inline-flex; align-items: center; gap: .7rem; border: 1px solid var(--line-strong); border-radius: 999px; padding: .64rem .9rem .64rem 1rem; background: rgba(255,255,255,.04); color: var(--text); cursor: pointer; font: inherit; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+  .menu-toggle:hover { border-color: rgba(99,196,255,.65); background: rgba(99,196,255,.09); transform: translateY(-1px); }
+  .menu-label { font-family: 'DM Mono', monospace; font-size: .67rem; letter-spacing: .12em; text-transform: uppercase; }
+  .burger-icon { width: 20px; display: grid; gap: 4px; }
+  .burger-icon span { display: block; width: 100%; height: 1px; background: currentColor; transition: transform .25s ease, opacity .2s ease; transform-origin: center; }
+  body.menu-open .burger-icon span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+  body.menu-open .burger-icon span:nth-child(2) { opacity: 0; }
+  body.menu-open .burger-icon span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+  body.menu-open { overflow: hidden; }
+  .menu-backdrop { position: fixed; inset: 0; z-index: 80; background: rgba(1,7,14,.68); opacity: 0; visibility: hidden; backdrop-filter: blur(4px); transition: opacity .25s ease, visibility .25s ease; }
+  .menu-backdrop.open { opacity: 1; visibility: visible; }
+  .menu-drawer { position: fixed; top: 0; right: 0; z-index: 90; width: min(460px, 92vw); height: 100dvh; display: grid; grid-template-rows: auto 1fr auto; background: linear-gradient(160deg, rgba(18,35,58,.99), rgba(7,17,31,.99)); border-left: 1px solid var(--line-strong); box-shadow: -28px 0 80px rgba(0,0,0,.42); transform: translateX(102%); visibility: hidden; transition: transform .32s cubic-bezier(.2,.75,.25,1), visibility .32s ease; }
+  .menu-drawer.open { transform: translateX(0); visibility: visible; }
+  .menu-drawer-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding: 1.5rem; border-bottom: 1px solid var(--line); }
+  .menu-kicker, .menu-group > p { color: var(--accent); font-family: 'DM Mono', monospace; font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; }
+  .menu-title { margin-top: .35rem; font-family: 'DM Serif Display', serif; font-size: 1.8rem; line-height: 1; }
+  .menu-close { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 999px; color: var(--soft); background: rgba(255,255,255,.035); font-size: 1.5rem; cursor: pointer; }
+  .menu-close:hover { color: var(--accent); border-color: var(--accent); }
+  .menu-drawer-body { padding: 1rem 1.5rem 1.4rem; overflow-y: auto; }
+  .menu-group { padding: .8rem 0 1rem; border-bottom: 1px solid var(--line); }
+  .menu-group:last-child { border-bottom: 0; }
+  .menu-group > p { margin: 0 0 .55rem; }
+  .menu-link { display: grid; grid-template-columns: 34px 1fr; align-items: center; gap: .5rem; padding: .7rem 0; color: var(--soft); text-decoration: none; font-size: 1.08rem; transition: color .2s ease, transform .2s ease; }
+  .menu-link > span { color: var(--muted); font: .66rem 'DM Mono', monospace; letter-spacing: .08em; }
+  .menu-link:hover, .menu-link.active { color: var(--accent); transform: translateX(4px); }
+  .menu-link-sub { padding-left: 1.1rem; font-size: .92rem; color: var(--muted); }
+  .menu-link-external { color: var(--gold); }
+  .menu-drawer-foot { display: grid; gap: .35rem; padding: 1.2rem 1.5rem 1.5rem; border-top: 1px solid var(--line); color: var(--muted); font: .62rem 'DM Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+  .menu-drawer-foot a { color: var(--soft); text-decoration: none; text-transform: none; letter-spacing: 0; font-size: .72rem; }
+
+  /* PROJECTS & DEMOS */
+  .subsection-heading { display: grid; grid-template-columns: minmax(0,.9fr) minmax(300px,.65fr); gap: 2rem; align-items: end; margin: 1.4rem 0 1.3rem; }
+  .subsection-kicker { margin: 0 0 .45rem; color: var(--gold); font: .67rem 'DM Mono', monospace; letter-spacing: .16em; text-transform: uppercase; }
+  .subsection-heading h3, .project-library-intro h3, .drone-showcase-copy h3 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem,3.5vw,2.8rem); font-weight: 400; line-height: 1.04; }
+  .subsection-heading > p, .project-library-intro > p:last-child { margin: 0; color: var(--soft); }
+  #demos { scroll-margin-top: 7rem; }
+  .demo-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+  .demo-card { overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+  .demo-preview { position: relative; display: block; aspect-ratio: 16/9; overflow: hidden; border-bottom: 1px solid var(--line); background: #020617; }
+  .demo-preview::after { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(255,255,255,.035); }
+  .report-preview img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .45s ease, filter .3s ease; }
+  .report-preview:hover img { transform: scale(1.025); filter: brightness(1.06); }
+  .preview-launch { position: absolute; right: 1rem; bottom: 1rem; z-index: 2; border: 1px solid rgba(99,196,255,.35); border-radius: 999px; padding: .55rem .75rem; color: var(--accent); background: rgba(7,17,31,.88); backdrop-filter: blur(8px); font: .62rem 'DM Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+  .demo-card-body { display: flex; flex-direction: column; flex: 1; padding: clamp(1.15rem,2.5vw,1.55rem); }
+  .demo-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; margin-bottom: .8rem; color: var(--muted); font: .62rem 'DM Mono', monospace; letter-spacing: .09em; text-transform: uppercase; }
+  .demo-meta span:first-child { color: var(--accent); }
+  .demo-card h3 { font-size: clamp(1.45rem,2.8vw,2rem); line-height: 1.08; }
+  .demo-card-body > p { color: var(--soft); margin: .8rem 0 1rem; }
+  .demo-feature-list { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1.2rem; }
+  .demo-feature-list span, .drone-source-options span { border: 1px solid var(--line); border-radius: 999px; padding: .34rem .58rem; color: var(--soft); background: rgba(255,255,255,.03); font: .61rem 'DM Mono', monospace; letter-spacing: .05em; text-transform: uppercase; }
+  .demo-actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: auto; }
+  .demo-note { color: var(--muted); font: .62rem 'DM Mono', monospace; letter-spacing: .06em; text-transform: uppercase; }
+
+  .dispatch-preview { display: grid; grid-template-columns: 28% 1fr 31%; padding-top: 20px; background: linear-gradient(135deg,#020617,#071328); }
+  .dispatch-demo-banner { position: absolute; inset: 0 0 auto; height: 20px; display: grid; place-items: center; color: #111827; background: #f3a20c; font: 800 6px 'DM Mono', monospace; letter-spacing: .18em; text-transform: uppercase; }
+  .dispatch-demo-sidebar, .dispatch-demo-orders { padding: .75rem .55rem; border-right: 1px solid rgba(99,196,255,.18); background: rgba(7,17,40,.94); }
+  .dispatch-demo-orders { border-right: 0; border-left: 1px solid rgba(99,196,255,.18); display: grid; align-content: start; gap: .45rem; }
+  .mini-logo { display: block; margin-bottom: .8rem; color: #00ccff; font: 800 8px 'DM Mono', monospace; letter-spacing: .12em; text-transform: uppercase; }
+  .mini-control { display: block; width: 63%; height: 8px; margin: .38rem 0; border-radius: 3px; border: 1px solid rgba(0,204,255,.2); background: rgba(0,204,255,.05); }
+  .mini-control.wide { width: 100%; height: 16px; background: rgba(0,204,255,.12); }
+  .mini-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; margin-top: .8rem; }
+  .mini-stats i { height: 18px; border: 1px solid rgba(0,204,255,.16); border-radius: 3px; background: rgba(255,255,255,.025); }
+  .dispatch-demo-map { position: relative; overflow: hidden; background: radial-gradient(circle at 40% 35%,rgba(0,204,255,.08),transparent 32%), linear-gradient(rgba(99,196,255,.035) 1px,transparent 1px), linear-gradient(90deg,rgba(99,196,255,.035) 1px,transparent 1px), #020817; background-size: auto,22px 22px,22px 22px,auto; }
+  .dispatch-demo-map::before { content: ''; position: absolute; width: 90%; height: 55%; left: 5%; top: 25%; border: 1px solid rgba(0,204,255,.18); border-radius: 50% 35% 55% 38%; transform: rotate(-8deg); }
+  .map-dot { position: absolute; width: 7px; height: 7px; border: 2px solid #fff; border-radius: 999px; background: var(--green); box-shadow: 0 0 0 4px rgba(85,210,143,.12); }
+  .dot-one{left:23%;top:35%}.dot-two{left:43%;top:58%;background:var(--gold)}.dot-three{left:61%;top:30%}.dot-four{left:76%;top:67%;background:var(--red)}.dot-five{left:35%;top:74%}
+  .map-route { position: absolute; height: 1px; background: linear-gradient(90deg,transparent,#00ccff,transparent); transform-origin: left center; }
+  .route-one { width: 46%; left: 25%; top: 39%; transform: rotate(19deg); }.route-two{width:39%;left:39%;top:70%;transform:rotate(-35deg)}
+  .dispatch-demo-orders::before { content:'Orders'; color:#00ccff; font:800 7px 'DM Mono',monospace; letter-spacing:.14em; text-transform:uppercase; }
+  .dispatch-demo-orders span { display:block; height:22px; border:1px solid rgba(0,204,255,.14); border-radius:4px; background:linear-gradient(90deg,rgba(0,204,255,.10) 0 24%,rgba(255,255,255,.025) 24%); }
+
+  .project-library { margin-top: 1rem; padding: clamp(1.2rem,3vw,2rem); }
+  .project-library-intro { display: grid; grid-template-columns: minmax(230px,.75fr) minmax(0,1.25fr); column-gap: 2rem; align-items: end; padding-bottom: 1.4rem; border-bottom: 1px solid var(--line); }
+  .project-library-intro .subsection-kicker { grid-column: 1/-1; }
+  .project-list-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 1.5rem; }
+  .project-list { list-style: none; padding: 0; margin: 0; }
+  .project-list li { display: grid; grid-template-columns: 34px 1fr; gap: .7rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  .project-list li:last-child { border-bottom: 0; }
+  .project-index { color: var(--accent); font: .65rem 'DM Mono',monospace; letter-spacing:.08em; padding-top:.16rem; }
+  .project-list strong { display:block; font-size:.98rem; line-height:1.25; }
+  .project-list p { margin:.25rem 0 0; color:var(--muted); font-size:.84rem; line-height:1.4; }
+
+  /* DRONE GALLERY PLACEHOLDERS */
+  .drone-showcase { display: grid; grid-template-columns: 1.2fr .8fr; min-height: 390px; overflow: hidden; }
+  .drone-feature-placeholder { position: relative; min-height: 390px; overflow: hidden; background: radial-gradient(circle at 70% 20%,rgba(243,184,76,.22),transparent 18rem), linear-gradient(180deg,#1b4460 0 42%,#dba45e 42% 47%,#24483f 47% 66%,#0a1929 66%); }
+  .drone-feature-placeholder::before, .drone-feature-placeholder::after { content:''; position:absolute; left:-10%; right:-10%; border-radius:50%; background:#17382f; }
+  .drone-feature-placeholder::before { height:45%; bottom:18%; transform:rotate(-5deg); opacity:.92; }.drone-feature-placeholder::after{height:34%;bottom:4%;background:#0b2422;transform:rotate(5deg)}
+  .drone-horizon { position:absolute; inset:0; background:linear-gradient(115deg,transparent 0 48%,rgba(255,255,255,.16) 49%,transparent 50%); opacity:.35; }
+  .drone-play { position:absolute; left:50%; top:50%; z-index:3; transform:translate(-50%,-50%); width:66px; height:66px; display:grid; place-items:center; padding-left:4px; border:1px solid rgba(255,255,255,.45); border-radius:50%; color:#fff; background:rgba(7,17,31,.45); backdrop-filter:blur(8px); }
+  .drone-placeholder-label { position:absolute; left:1rem; bottom:1rem; z-index:3; color:#fff; font:.64rem 'DM Mono',monospace; letter-spacing:.09em; text-transform:uppercase; }
+  .drone-showcase-copy { display:flex; flex-direction:column; justify-content:center; padding:clamp(1.4rem,3.5vw,2.5rem); background:linear-gradient(145deg,rgba(18,35,58,.98),rgba(8,19,34,.96)); }
+  .placeholder-copy { color:var(--soft); margin:.9rem 0 1.3rem; }
+  .drone-source-options { display:flex; flex-wrap:wrap; gap:.45rem; }
+  .drone-gallery-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin-top:1rem; }
+  .drone-tile { border:1px solid var(--line); border-radius:22px; overflow:hidden; background:rgba(18,35,58,.58); }
+  .drone-tile > div:last-child { padding:1.05rem 1.15rem 1.2rem; }
+  .drone-tile-art { aspect-ratio:16/9; border-bottom:1px solid var(--line); background-size:cover; }
+  .art-one{background:linear-gradient(150deg,transparent 40%,rgba(7,17,31,.25)),linear-gradient(180deg,#5491ac 0 44%,#d4b179 44% 50%,#315842 50%)}.art-two{background:radial-gradient(circle at 30% 26%,rgba(255,255,255,.55) 0 3%,transparent 4%),linear-gradient(135deg,#0e2940,#456b70 45%,#b37c54 46%,#142f2c)}.art-three{background:linear-gradient(45deg,rgba(99,196,255,.10),transparent),repeating-linear-gradient(90deg,#0a1929 0 18px,#12233a 18px 19px)}
+  .drone-tile small { color:var(--gold); font:.61rem 'DM Mono',monospace; letter-spacing:.09em; text-transform:uppercase; }
+  .drone-tile h3 { margin:.35rem 0 .45rem; font-size:1.25rem; }
+  .drone-tile p { color:var(--muted); margin:0; font-size:.88rem; }
+
+  @media (max-width: 1040px) {
+    .demo-grid, .drone-showcase { grid-template-columns: 1fr; }
+    .project-library-intro { grid-template-columns:1fr; gap:.7rem; align-items:start; }
+    .project-list-grid { grid-template-columns:1fr; }
+    .project-list:first-child li:last-child { border-bottom:1px solid var(--line); }
+    .drone-gallery-grid { grid-template-columns:1fr; }
+  }
+  @media (max-width: 760px) {
+    .nav-action { display:none; }
+    .menu-toggle { padding:.62rem .75rem; }
+    .menu-label { display:none; }
+    .subsection-heading { grid-template-columns:1fr; gap:.6rem; }
+    .demo-actions { align-items:flex-start; flex-direction:column; }
+    .demo-actions .button { width:100%; }
+    .project-library { border-radius:22px; }
+    .dispatch-preview { grid-template-columns:30% 1fr 32%; }
+    .drone-feature-placeholder { min-height:280px; }
+  }
+
 </style>
 <script type="application/ld+json">
 {
@@ -593,15 +718,49 @@
       <span class="brand-role">Ops · Analytics · Systems</span>
     </span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#impact">Impact</a></li>
-    <li><a href="#systems">Systems</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a class="nav-action" href="mailto:alexanderjworden@gmail.com">Email Me</a>
+  <div class="nav-controls">
+    <a class="nav-action" href="mailto:alexanderjworden@gmail.com">Email Me</a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open site menu" aria-controls="siteMenu" aria-expanded="false">
+      <span class="menu-label">Menu</span>
+      <span class="burger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+  </div>
 </nav>
+<div class="menu-backdrop" id="menuBackdrop" aria-hidden="true"></div>
+<aside class="menu-drawer" id="siteMenu" aria-hidden="true" aria-label="Site menu">
+  <div class="menu-drawer-head">
+    <div>
+      <div class="menu-kicker">Alexander Worden</div>
+      <div class="menu-title">Explore the portfolio</div>
+    </div>
+    <button class="menu-close" id="menuClose" type="button" aria-label="Close site menu">×</button>
+  </div>
+  <div class="menu-drawer-body">
+    <div class="menu-group">
+      <p>Main</p>
+      <a class="menu-link" href="#top"><span>01</span>Overview</a>
+      <a class="menu-link" href="#impact"><span>02</span>Impact</a>
+      <a class="menu-link" href="#projects"><span>03</span>Projects</a>
+      <a class="menu-link menu-link-sub" href="#demos"><span>↳</span>Demos</a>
+      <a class="menu-link" href="#experience"><span>04</span>Experience</a>
+      <a class="menu-link" href="#skills"><span>05</span>Skills</a>
+      <a class="menu-link" href="#credentials"><span>06</span>Credentials</a>
+    </div>
+    <div class="menu-group">
+      <p>Creative</p>
+      <a class="menu-link" href="#drone-gallery"><span>07</span>Drone gallery</a>
+    </div>
+    <div class="menu-group">
+      <p>Connect</p>
+      <a class="menu-link" href="#contact"><span>08</span>Contact</a>
+      <a class="menu-link menu-link-external" href="./Alex_Worden_Resume_2026.docx" download><span>↓</span>Download résumé</a>
+    </div>
+  </div>
+  <div class="menu-drawer-foot">
+    <span>Operations · Analytics · Data Engineering</span>
+    <a href="mailto:alexanderjworden@gmail.com">alexanderjworden@gmail.com</a>
+  </div>
+</aside>
 
 <main id="main">
   <header id="top" class="hero section-wrap">
@@ -610,7 +769,7 @@
       <h1>Every challenge is an <em>opportunity.</em></h1>
       <p class="hero-subtitle">I build the bridge between strategy and execution: <span>diagnosing operational problems with data, shipping lightweight internal tools, and leading performance systems that move real business metrics.</span></p>
       <div class="hero-actions" aria-label="Primary actions">
-        <a class="button primary" href="#systems">See Proof of Work</a>
+        <a class="button primary" href="#projects">See Projects & Demos</a>
         <a class="button secondary" href="#experience">View Experience</a>
         <a class="button secondary" href="./Alex_Worden_Resume_2026.docx" download>Download Resume</a>
       </div>
@@ -689,57 +848,95 @@
     </div>
   </section>
 
-  <section id="systems" aria-labelledby="systems-title">
+  <section id="projects" aria-labelledby="projects-title">
     <div class="section-heading reveal">
       <div>
-        <p class="eyebrow">Proof of work</p>
-        <h2 id="systems-title">Systems I have built to make operations better.</h2>
+        <p class="eyebrow">Projects</p>
+        <h2 id="projects-title">Operational systems built for real decisions.</h2>
       </div>
-      <p class="section-lede">These are not just projects. They are practical operating systems: data pipelines, maps, communications, scoring models, and alerts designed to change behavior at scale.</p>
+      <p class="section-lede">A growing collection of interactive demos and representative project work spanning dispatch, reporting automation, analytics, communications, and process design.</p>
     </div>
-    <div class="case-grid">
-      <article class="card case-card reveal">
-        <div class="case-num">01 · Performance intelligence</div>
-        <h3>Bayesian-adjusted scoring pipeline</h3>
-        <p>Architected a Databricks / Spark SQL pipeline that evaluates workforce quality with national and area-level tiers, cohort movement criteria, and normalized infraction rates.</p>
-        <div class="case-result"><strong>Outcome:</strong> Gave operations a defensible way to promote, coach, demote, and manage workforce performance.</div>
-        <div class="case-tags"><span class="tag">Databricks</span><span class="tag">Spark SQL</span><span class="tag">NTILE</span><span class="tag">Bayesian</span></div>
+
+    <div id="demos" class="subsection-heading reveal">
+      <div>
+        <p class="subsection-kicker">Demos</p>
+        <h3>Open the work and explore it.</h3>
+      </div>
+      <p>Each demo uses simulated or clearly fictional data and is packaged as a standalone project. This grid is intentionally modular so more demos can be added later without redesigning the page.</p>
+    </div>
+
+    <div class="demo-grid">
+      <article class="card demo-card reveal">
+        <div class="demo-preview dispatch-preview" aria-hidden="true">
+          <div class="dispatch-demo-banner">Simulated data</div>
+          <div class="dispatch-demo-sidebar">
+            <span class="mini-logo">Dispatch</span>
+            <span class="mini-control wide"></span>
+            <span class="mini-control"></span>
+            <span class="mini-control"></span>
+            <div class="mini-stats"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="dispatch-demo-map">
+            <span class="map-route route-one"></span>
+            <span class="map-route route-two"></span>
+            <i class="map-dot dot-one"></i><i class="map-dot dot-two"></i><i class="map-dot dot-three"></i><i class="map-dot dot-four"></i><i class="map-dot dot-five"></i>
+          </div>
+          <div class="dispatch-demo-orders"><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div class="demo-card-body">
+          <div class="demo-meta"><span>Interactive demo</span><span>Dispatch operations</span></div>
+          <h3>Dispatch Operations Command Center</h3>
+          <p>A simulated dispatch environment for viewing driver status, active orders, geographic coverage, operational alerts, and market-level workload in one workspace.</p>
+          <div class="demo-feature-list"><span>Driver and order visibility</span><span>Map-based monitoring</span><span>Simulated workflows</span></div>
+          <div class="demo-actions">
+            <a class="button primary" href="./demos/dispatch-tool/index.html" target="_blank" rel="noopener">Launch Demo</a>
+            <span class="demo-note">No login required</span>
+          </div>
+        </div>
       </article>
-      <article class="card case-card reveal">
-        <div class="case-num">02 · Performance communication</div>
-        <h3>Tier-based email and SMS engine</h3>
-        <p>Engineered workforce performance communications using weekly HTML ranking emails and Twilio SMS, deployed across markets to encourage stronger execution follow-through.</p>
-        <div class="case-result"><strong>Outcome:</strong> Created a competitive culture that pushed KPI improvement beyond fixed targets.</div>
-        <div class="case-tags"><span class="tag">Apps Script</span><span class="tag">Twilio</span><span class="tag">HTML Email</span><span class="tag">Automation</span></div>
+
+      <article class="card demo-card reveal">
+        <a class="demo-preview report-preview" href="./demos/operations-report/daily-operations-report-demo.html" target="_blank" rel="noopener" aria-label="Open the automated operations report demo">
+          <img src="./demos/operations-report/daily-operations-report-card.webp" alt="Preview of a fictional automated daily operations report dated December 31, 2099" loading="lazy">
+          <span class="preview-launch">Open report ↗</span>
+        </a>
+        <div class="demo-card-body">
+          <div class="demo-meta"><span>Interactive demo</span><span>Reporting automation</span></div>
+          <h3>Automated Operations Reporting</h3>
+          <p>A leadership-ready daily report combining volume, on-time performance, financial metrics, customer ratings, issue categories, and market comparisons.</p>
+          <div class="demo-feature-list"><span>Executive KPI summary</span><span>Exception reporting</span><span>Market comparison</span></div>
+          <div class="demo-actions">
+            <a class="button primary" href="./demos/operations-report/daily-operations-report-demo.html" target="_blank" rel="noopener">Launch Demo</a>
+            <span class="demo-note">Fictional 2099 data</span>
+          </div>
+        </div>
       </article>
-      <article class="card case-card reveal">
-        <div class="case-num">03 · Operational visibility</div>
-        <h3>Geospatial operations and GPS tooling</h3>
-        <p>Built internal map tools including a Leaflet.js operations map, GPS track viewer, scatterplot explorers, and drag-and-drop dashboards for fast root cause analysis.</p>
-        <div class="case-result"><strong>Outcome:</strong> Reduced the distance between data discovery and operational action.</div>
-        <div class="case-tags"><span class="tag">Leaflet.js</span><span class="tag">HTML/JS</span><span class="tag">CSV</span><span class="tag">RCA</span></div>
-      </article>
-      <article class="card case-card reveal">
-        <div class="case-num">04 · Early warning operations</div>
-        <h3>Delay risk detection and intervention</h3>
-        <p>Improved alerting systems for signals such as extended restaurant wait time, handoff abandonment, SLA drift, and downstream delay risk.</p>
-        <div class="case-result"><strong>Outcome:</strong> Helped teams reassign work, intervene, or communicate before service risks became customer-facing failures.</div>
-        <div class="case-tags"><span class="tag">Process Design</span><span class="tag">ETA</span><span class="tag">Workflow Routing</span><span class="tag">Alerts</span></div>
-      </article>
-      <article class="card case-card reveal">
-        <div class="case-num">05 · Capacity planning</div>
-        <h3>Predictive capacity and operating health</h3>
-        <p>Developed supply planning approaches that account for demand volume, capacity availability, acceptance behavior, and operational demand by operating unit.</p>
-        <div class="case-result"><strong>Outcome:</strong> Supported capacity planning, operating readiness, and better fulfillment decisions.</div>
-        <div class="case-tags"><span class="tag">Forecasting</span><span class="tag">Excel</span><span class="tag">Power BI</span><span class="tag">Tableau</span></div>
-      </article>
-      <article class="card case-card reveal">
-        <div class="case-num">06 · Accountability systems</div>
-        <h3>Incentive and accountability system</h3>
-        <p>Designed incentive and enforcement programs that reward strong execution behavior while escalating repeated punctuality, follow-through, and compliance gaps.</p>
-        <div class="case-result"><strong>Outcome:</strong> Increased accountability while protecting service quality and customer expectations.</div>
-        <div class="case-tags"><span class="tag">Performance Ops</span><span class="tag">Compliance</span><span class="tag">SOPs</span><span class="tag">KPI</span></div>
-      </article>
+    </div>
+
+    <div class="project-library card reveal">
+      <div class="project-library-intro">
+        <p class="subsection-kicker">Additional project work</p>
+        <h3>Systems, programs, and tools without public demos.</h3>
+        <p>Some work cannot be published because it depended on internal systems or proprietary data. These summaries make the scope and purpose clear without exposing confidential material.</p>
+      </div>
+      <div class="project-list-grid">
+        <ul class="project-list">
+          <li><span class="project-index">01</span><div><strong>Email automation</strong><p>Recurring HTML performance reports, alerts, and targeted communications generated from operational data.</p></div></li>
+          <li><span class="project-index">02</span><div><strong>Client surveying and feedback loops</strong><p>Survey workflows that collected structured feedback and routed trends into coaching and process improvements.</p></div></li>
+          <li><span class="project-index">03</span><div><strong>Workforce quality scoring</strong><p>Performance tiers, normalized issue rates, promotion criteria, coaching triggers, and accountability rules.</p></div></li>
+          <li><span class="project-index">04</span><div><strong>SMS notification workflows</strong><p>Automated reminders, performance notifications, escalation messages, and operational call-to-action campaigns.</p></div></li>
+          <li><span class="project-index">05</span><div><strong>Geospatial operations tools</strong><p>Market maps, GPS track viewers, location analysis, zone monitoring, and spatial root-cause tools.</p></div></li>
+          <li><span class="project-index">06</span><div><strong>Capacity and demand planning</strong><p>Forecasting tools that connected expected demand, available supply, service risk, and operating readiness.</p></div></li>
+        </ul>
+        <ul class="project-list">
+          <li><span class="project-index">07</span><div><strong>Customer-service QA program</strong><p>Interaction scoring, random review standards, coaching routines, and quality tracking tied to customer outcomes.</p></div></li>
+          <li><span class="project-index">08</span><div><strong>Delay-risk intervention</strong><p>Early warning logic for pickup delays, SLA drift, abandoned handoffs, and downstream service failures.</p></div></li>
+          <li><span class="project-index">09</span><div><strong>Recruiting and onboarding redesign</strong><p>Faster candidate processing, standardized onboarding, improved readiness, and lower recruiting cost.</p></div></li>
+          <li><span class="project-index">10</span><div><strong>Incentive and accountability programs</strong><p>Behavior-based rewards, escalating corrective actions, performance missions, and re-engagement campaigns.</p></div></li>
+          <li><span class="project-index">11</span><div><strong>Executive performance dashboards</strong><p>KPI summaries and drilldowns designed to move leadership from symptom to action quickly.</p></div></li>
+          <li><span class="project-index">12</span><div><strong>SOP and training systems</strong><p>Repeatable operating procedures, launch playbooks, decision guides, and frontline training materials.</p></div></li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -879,8 +1076,37 @@
     </div>
     <div class="personal-grid">
       <div class="card personal-card reveal"><h3>Competition</h3><p>Ryan High School water polo, state championship runs, and two Junior Olympics appearances. I learned early how much systems, preparation, and team trust matter.</p><small>Water polo · Team performance</small></div>
-      <div class="card personal-card reveal"><h3>Creative eye</h3><p>Landscape photography, aerial/drone work, concerts, DJing, and travel keep me curious and help me see patterns outside of spreadsheets.</p><small>Photography · Music · Travel</small></div>
+      <div class="card personal-card reveal"><h3>Creative eye</h3><p>Landscape photography, aerial and drone work, and travel keep me curious and help me see patterns outside of spreadsheets.</p><small>Photography · Drone work · Travel</small></div>
       <div class="card personal-card reveal"><h3>Community</h3><p>Frisco CERT Siren Warden and amateur emergency management volunteer. I care about preparedness, public safety, and practical tools that help people act.</p><small>CERT · Emergency management</small></div>
+    </div>
+  </section>
+
+
+  <section id="drone-gallery" aria-labelledby="drone-gallery-title">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">Drone gallery</p>
+        <h2 id="drone-gallery-title">Aerial work from outside the spreadsheet.</h2>
+      </div>
+      <p class="section-lede">A dedicated home for drone videos and aerial photography. The layout is ready for files hosted with the site, embedded video, or approved cloud links once the collection is selected.</p>
+    </div>
+    <div class="drone-showcase card reveal">
+      <div class="drone-feature-placeholder">
+        <div class="drone-horizon"></div>
+        <span class="drone-play" aria-hidden="true">▶</span>
+        <div class="drone-placeholder-label">Featured drone reel placeholder</div>
+      </div>
+      <div class="drone-showcase-copy">
+        <p class="subsection-kicker">Content needed</p>
+        <h3>Featured reel or signature flight</h3>
+        <p class="placeholder-copy">Add a short introduction explaining where the footage was captured, what made the location interesting, and what viewers should notice. This space is designed for one lead video before the supporting gallery.</p>
+        <div class="drone-source-options"><span>Vercel-hosted MP4</span><span>YouTube or Vimeo embed</span><span>Google Drive link</span></div>
+      </div>
+    </div>
+    <div class="drone-gallery-grid">
+      <article class="drone-tile reveal"><div class="drone-tile-art art-one"></div><div><small>Photo series placeholder</small><h3>Landscapes</h3><p>Add a curated group of wide aerial images with brief location captions.</p></div></article>
+      <article class="drone-tile reveal"><div class="drone-tile-art art-two"></div><div><small>Video series placeholder</small><h3>Motion studies</h3><p>Add short flights, reveals, orbit shots, or edited reels that show movement.</p></div></article>
+      <article class="drone-tile reveal"><div class="drone-tile-art art-three"></div><div><small>Optional context</small><h3>Flight notes</h3><p>Add the story behind selected shoots, equipment details, or creative decisions.</p></div></article>
     </div>
   </section>
 
@@ -1032,8 +1258,49 @@
     revealObserver.observe(el);
   });
 
-  // ── Active nav link tracking ──────────────────────────────────
-  var navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+  // ── Burger drawer controls ────────────────────────────────────
+  var menuToggle = document.getElementById('menuToggle');
+  var menuClose = document.getElementById('menuClose');
+  var siteMenu = document.getElementById('siteMenu');
+  var menuBackdrop = document.getElementById('menuBackdrop');
+  var lastMenuFocus = null;
+
+  function openSiteMenu() {
+    lastMenuFocus = document.activeElement;
+    document.body.classList.add('menu-open');
+    siteMenu.classList.add('open');
+    menuBackdrop.classList.add('open');
+    siteMenu.setAttribute('aria-hidden', 'false');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    menuToggle.setAttribute('aria-label', 'Close site menu');
+    setTimeout(function () { menuClose.focus(); }, 80);
+  }
+
+  function closeSiteMenu(returnFocus) {
+    document.body.classList.remove('menu-open');
+    siteMenu.classList.remove('open');
+    menuBackdrop.classList.remove('open');
+    siteMenu.setAttribute('aria-hidden', 'true');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Open site menu');
+    if (returnFocus && lastMenuFocus) lastMenuFocus.focus();
+  }
+
+  menuToggle.addEventListener('click', function () {
+    if (siteMenu.classList.contains('open')) closeSiteMenu(true);
+    else openSiteMenu();
+  });
+  menuClose.addEventListener('click', function () { closeSiteMenu(true); });
+  menuBackdrop.addEventListener('click', function () { closeSiteMenu(true); });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && siteMenu.classList.contains('open')) closeSiteMenu(true);
+  });
+  document.querySelectorAll('.menu-link[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function () { closeSiteMenu(false); });
+  });
+
+  // ── Active menu link tracking ─────────────────────────────────
+  var navLinks = Array.from(document.querySelectorAll('.menu-link[href^="#"]'));
   var sections = navLinks
     .map(function (link) { return document.querySelector(link.getAttribute('href')); })
     .filter(Boolean);
