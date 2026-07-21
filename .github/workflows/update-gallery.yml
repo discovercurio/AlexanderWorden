@@ -1,0 +1,40 @@
+name: Update photography gallery
+
+on:
+  push:
+    paths:
+      - "gallery/**"
+      - "scripts/build_gallery_manifest.py"
+      - ".github/workflows/update-gallery.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-gallery-manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Build gallery manifest
+        run: python scripts/build_gallery_manifest.py
+
+      - name: Commit manifest when changed
+        shell: bash
+        run: |
+          if git diff --quiet -- gallery/gallery-manifest.json; then
+            echo "Gallery manifest is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add gallery/gallery-manifest.json
+          git commit -m "Update photography gallery manifest"
+          git push
