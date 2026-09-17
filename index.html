@@ -1378,5 +1378,96 @@
   document.getElementById('year').textContent = new Date().getFullYear();
   document.getElementById('printPage').addEventListener('click', function () { window.print(); });
 </script>
+<!-- ============================================================
+     VISITOR TRACKER — invisible, no UI impact whatsoever
+     ============================================================ -->
+<script>
+(function () {
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbypZXzPYXnfl6I4ELPElZheq0B4pGwxXhffE2mwS21jG12zQi8s_tjanagjzSwITZroOA/exec";
+
+  if (!ENDPOINT || ENDPOINT === "YOUR_DEPLOYMENT_URL_HERE") return;
+
+  var startTime = Date.now();
+  var pingSent  = false;
+
+  function parseUA(ua) {
+    var device =
+      /Mobi|Android|iPhone|iPad|iPod/i.test(ua) ? "Mobile" :
+      /Tablet|iPad/i.test(ua)                    ? "Tablet" : "Desktop";
+
+    var os =
+      /Windows NT 10|Windows NT 11/.test(ua) ? "Windows 10/11" :
+      /Windows/.test(ua)                     ? "Windows (older)" :
+      /iPhone|iPad|iPod/.test(ua)            ? "iOS" :
+      /Android/.test(ua)                     ? "Android" :
+      /Mac OS X/.test(ua)                    ? "macOS" :
+      /Linux/.test(ua)                       ? "Linux" : "Unknown";
+
+    var browser =
+      /Edg\//.test(ua)     ? "Edge" :
+      /OPR\/|Opera/.test(ua) ? "Opera" :
+      /Chrome\//.test(ua)  ? "Chrome" :
+      /Firefox\//.test(ua) ? "Firefox" :
+      /Safari\//.test(ua)  ? "Safari" : "Unknown";
+
+    return { device: device, os: os, browser: browser };
+  }
+
+  function sendPing(eventType, duration) {
+    var ua   = parseUA(navigator.userAgent);
+    var base = {
+      event:   eventType || "load",
+      device:  ua.device,
+      os:      ua.os,
+      browser: ua.browser,
+      screen:  screen.width + "x" + screen.height,
+      tz:      (Intl && Intl.DateTimeFormat)
+                 ? Intl.DateTimeFormat().resolvedOptions().timeZone
+                 : "",
+      lang:    navigator.language || "",
+      ref:     document.referrer  || "",
+      url:     window.location.href,
+      duration: duration != null ? String(duration) : ""
+    };
+
+    fetch("https://ipapi.co/json/", { cache: "no-store" })
+      .then(function (r) { return r.json(); })
+      .then(function (geo) {
+        base.ip      = geo.ip           || "";
+        base.city    = geo.city         || "";
+        base.region  = geo.region       || "";
+        base.country = geo.country_name || "";
+        base.isp     = geo.org          || "";
+      })
+      .catch(function () {})
+      .finally(function () {
+        var qs = Object.keys(base)
+          .map(function (k) {
+            return encodeURIComponent(k) + "=" + encodeURIComponent(base[k]);
+          })
+          .join("&");
+        fetch(ENDPOINT + "?" + qs, { mode: "no-cors" }).catch(function () {});
+      });
+  }
+
+  window.addEventListener("load", function () {
+    if (!pingSent) {
+      pingSent = true;
+      sendPing("load", null);
+    }
+  });
+
+  function onExit() {
+    var duration = Math.round((Date.now() - startTime) / 1000);
+    sendPing("exit", duration);
+  }
+
+  window.addEventListener("beforeunload", onExit);
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") onExit();
+  });
+})();
+</script>
 </body>
 </html>
