@@ -1,0 +1,59 @@
+name: Deploy portfolio to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build photography gallery manifest
+        run: python3 scripts/build_gallery_manifest.py
+
+      - name: Inject dispatch map configuration
+        env:
+          CARTO_API_KEY: ${{ secrets.CARTO_API_KEY }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          key = os.environ.get("CARTO_API_KEY", "").strip()
+          if not key:
+              raise SystemExit("CARTO_API_KEY is missing. Add it to this repository's GitHub Actions secrets.")
+
+          Path("demos/dispatch-tool/config.js").write_text(
+              "window.CARTO_API_KEY = " + json.dumps(key) + ";\n",
+              encoding="utf-8",
+          )
+          PY
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: '.'
+
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
